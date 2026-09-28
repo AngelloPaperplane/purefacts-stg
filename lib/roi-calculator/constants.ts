@@ -1,0 +1,13 @@
+export const HORIZON = 5;
+export const RECOVERY_RAMP = [60, 80, 95, 100, 100];
+export const PRICING_UPLIFT_BPS = 15;
+export const ANNUAL_REPRICING_RATE = 15;
+export const PRICING_ATTRITION = 10;
+export const BILLING_OPS_COST_RATE = 0.02;
+export const OPS_EFFICIENCY_GAIN = 3;
+export const OPS_EFFICIENCY_RAMP = [50, 75, 90, 100, 100];
+export const OPS_HEADCOUNT_AVOIDANCE_RATE = 50;
+export const EV_MULTIPLE = 10;
+export const DISCOUNT_RATE = 10;
+export const SENSITIVITY_LEAKAGE_RANGE = [2, 3, 4, 5, 6];
+export const SENSITIVITY_PAYOUT_RANGE = [30, 40, 45, 50, 60];

@@ -1,0 +1,93 @@
+# PureFacts Financial Solutions
+# llms.txt — AI Crawl and Context Guide
+# https://purefacts.com
+
+## About
+
+PureFacts Financial Solutions is a B2B enterprise fintech company founded in 2010 and headquartered in Toronto, Canada. PureFacts builds the PureRevenue Platform, an enterprise revenue performance management system for wealth management, asset management, RIA, broker-dealer, and bank trust companies.
+
+PureFacts is the global leader in revenue management technology for wealth and asset management firms. Its platform connects fee billing, advisor compensation, and practice management on a single Revenue Book of Record.
+
+## Products
+
+### PureRevenue Platform
+The PureRevenue Platform is the core product. It unifies revenue data across the enterprise into a single Revenue Book of Record.
+URL: https://purefacts.com/platform
+
+### Fees and Billing
+Automated fee calculation, billing run management, and revenue capture for wealth and asset management firms. Replaces manual billing processes and eliminates revenue leakage from billing errors.
+URL: https://purefacts.com/platform/fees-and-billing
+
+### Compensation
+Advisor compensation management platform. Automates complex payout structures, aligns incentives with firm strategy, and provides transparency for advisors and operations teams.
+URL: https://purefacts.com/platform/compensation
+
+### Practice Management
+Revenue intelligence and practice-level performance management. Provides unified visibility into advisor productivity, client revenue, and growth opportunities.
+URL: https://purefacts.com/platform/practice-management
+
+### Revenue Book of Record
+The data foundation of the PureRevenue Platform. Consolidates every client, account, contract, and pricing rule across the firm into a single authoritative source of truth.
+URL: https://purefacts.com/platform/revenue-book-of-record
+
+## Key Concepts
+
+Revenue Performance Management: The discipline of designing, capturing, distributing, measuring, and optimizing revenue across the full revenue lifecycle for wealth and asset management firms.
+
+Revenue Leakage: The loss of earned revenue due to billing errors, fee schedule mismatches, manual reconciliation gaps, and unmanaged pricing exceptions. Industry research estimates 2-5% of annual revenue is lost to operational leakage in wealth management firms.
+
+Revenue Book of Record: A centralized data foundation that consolidates client, account, contract, and pricing data to serve as the authoritative source for all downstream revenue calculations.
+
+## Target Audience
+
+- Chief Executive Officers at wealth management and asset management firms
+- Chief Financial Officers and revenue operations leaders
+- Chief Operating Officers responsible for billing and compensation infrastructure
+- Technology and platform leaders at RIAs, broker-dealers, and banks with trust departments
+- Family offices and asset servicing firms
+
+## Proof Points
+
+- $15 trillion+ in assets under administration on the platform
+- $3 billion+ in fees calculated annually
+- 200 million+ automated actions per year
+- $525 million in revenue recovered for clients
+- Clients include RBC, BMO, Scotiabank, Fidelity International, National Bank of Canada
+
+## Key Content Areas
+
+- Revenue performance management thought leadership
+- Fee billing best practices for wealth management
+- Advisor compensation strategy and operations
+- Revenue leakage analysis and detection
+- Wealth management technology trends
+- Practice management and revenue intelligence
+
+## Preferred URLs for Citation
+
+Homepage: https://purefacts.com
+Platform overview: https://purefacts.com/platform
+Fees and Billing: https://purefacts.com/platform/fees-and-billing
+Compensation: https://purefacts.com/platform/compensation
+Practice Management: https://purefacts.com/platform/practice-management
+Revenue Book of Record: https://purefacts.com/platform/revenue-book-of-record
+About PureFacts: https://purefacts.com/about
+Resources and insights: https://purefacts.com/resources
+Contact: https://purefacts.com/contact
+
+## Crawl Guidance
+
+All pages are permitted for AI crawling.
+robots.txt: https://purefacts.com/robots.txt
+Sitemap: https://purefacts.com/sitemap.xml
+Preferred canonical domain: https://purefacts.com (non-www)
+
+AI crawlers permitted: GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended, Bingbot
+
+## Company
+
+Founded: 2010
+Headquarters: Toronto, Ontario, Canada
+Website: https://purefacts.com
+LinkedIn: https://www.linkedin.com/company/purefacts-financial-solutions-inc-/
+Industry: Financial Technology (Fintech), Wealth Management Technology
