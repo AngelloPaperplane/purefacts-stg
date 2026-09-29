@@ -2,7 +2,7 @@
 'use client'
 
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import Link from 'next/link'
 
 function useBreakpoint() {
@@ -29,6 +29,7 @@ const C = {
   muted:   'rgba(244,244,244,0.75)',
   subtle:  'rgba(244,244,244,0.45)',
   border:  'rgba(255,255,255,0.07)',
+  pink:    '#ED65D0'
 }
 
 const SUNSET = 'linear-gradient(135deg,#FACC22 0%,#FB5607 35%,#4760FF 70%,#0DCCFF 100%)'
@@ -38,7 +39,7 @@ function Hero() {
   const [mounted, setMounted] = useState(false)
   useEffect(() => { setTimeout(() => setMounted(true), 80) }, [])
   return (
-    <section style={{ position: 'relative', overflow: 'hidden', background: 'radial-gradient(ellipse 120% 80% at 50% 10%, #1a1e2e 0%, #140f0c 55%)', minHeight: isMobile ? 'auto' : '65vh', display: 'flex', alignItems: 'flex-start' }}>
+    <section style={{ position: 'relative', overflow: 'hidden', background: 'radial-gradient(ellipse 120% 80% at 50% 10%, #1a1e2e 0%, #140f0c 55%)', minHeight: isMobile ? 'auto' : '65vh', display: 'flex', alignItems: 'flex-start', backgroundImage: 'url("/background/fondo.jpeg")', backgroundPosition: 'center center', backgroundSize: 'cover' }}>
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 180, background: `linear-gradient(to bottom, transparent, ${C.bg})`, pointerEvents: 'none', zIndex: 1 }} aria-hidden="true" />
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0 20px' : isTablet ? '0 32px' : '0 48px', width: '100%', textAlign: 'center', position: 'relative', zIndex: 2, paddingTop: isMobile ? 112 : 160, paddingBottom: isMobile ? 96 : 130 }}>
         <div style={{ fontSize:14, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:C.azure, marginBottom:14 }}>Connected by design</div>
@@ -90,11 +91,11 @@ function ChooseYourPath(){
       <div style={{ maxWidth:1280, margin:'0 auto', padding:isMobile ? '0 20px' : isTablet ? '0 32px' : '0 48px' }}>
         <div style={{ marginBottom:isMobile ? 36 : 56, opacity:inView?1:0, transform:inView?'translateY(0)':'translateY(16px)', transition:'opacity 0.6s ease, transform 0.6s ease' }}>
           <div style={{ fontSize:14, fontWeight:700, letterSpacing:'0.18em',textAlign:'center', textTransform:'uppercase', color:C.azure, marginBottom:14 }}>CHOOSE YOUR PATH</div>
-          <h2 style={{ fontSize:'clamp(1.8rem, 3vw, 2.6rem)', fontWeight:700, lineHeight:1.12, letterSpacing:'-0.025em', color:C.text, maxWidth:640, margin:'14px auto' }}>
+          <h2 style={{ fontSize:'clamp(1.8rem, 3vw, 2.6rem)', fontWeight:700, lineHeight:1.12, letterSpacing:'-0.025em', color:C.text, maxWidth:640, margin:'14px auto', textAlign:'center' }}>
             Partnerships{' '}
             <span style={{ color:C.azure }}>designed</span><br/>for the way you work
           </h2>
-          <p style={{ fontSize:'1rem', color:C.muted, lineHeight:1.7, maxWidth:560, margin:'0 auto' }}>
+          <p style={{ textAlign: 'center', fontSize:'1rem', color:C.muted, lineHeight:1.7, maxWidth:560, margin:'0 auto' }}>
             When firms capture more earned revenue, improve pricing discipline, and align advisor behavior, the impact compounds across top-line growth, EBITDA, and enterprise value.
           </p>
         </div>
@@ -166,26 +167,24 @@ function WhyPartners(){
             {/* Left: eyebrow, H2, body */}
             <div>
               <Reveal>
-                <Eyebrow color={C.azure}>WHY PARTNER WITH PUREFACTS</Eyebrow>
+                <Eyebrow color={C.mandarin}>WHY PARTNER WITH PUREFACTS</Eyebrow>
                 <h2 style={{ fontSize: 'clamp(1.8rem,3vw,2.6rem)', fontWeight: 700, color: C.text, letterSpacing: '-0.025em', lineHeight: 1.18, margin: 0 }}>
-                  More value for your{' '}
-                  <span style={{ color: C.azure }}>Everything Downstream Suffers</span>
+                  More value for your<br />
+                  <span style={{ color: C.mandarin }}>business and your customers</span>
                 </h2>
               </Reveal>
               <Reveal delay={70}>
-                <p style={{ marginTop: 18, fontSize: 16, color: C.body, lineHeight: 1.75 }}>
-                  When moving parts are spread across disconnected systems, firms lose visibility. Manual work increases. Confidence drops. Processes slow down. What should be a strategic revenue engine starts to feel fragmented and difficult to trust. PureFacts takes a different approach.
-                </p>
+                <p style={{ marginTop: 18, fontSize: 16, color: C.body, lineHeight: 1.75 }}></p>
               </Reveal>
             </div>
 
             {/* Right: icons list (moved from below body, graphic removed) */}
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', alignSelf: 'start' }}>
               {[
-                { label: 'One Connected Foundation', color: C.azure,    icon: 'fa-link',          detail: 'Billing, compensation, reporting, and control points share the same data model. No reconciliation between systems.' },
-                { label: 'Greater Consistency',      color: C.mandarin, icon: 'fa-equals',         detail: 'Fee logic, payout rules, and reporting outputs behave the same way across every team, product, and region.' },
-                { label: 'Trustworthy Outputs',      color: C.azure,    icon: 'fa-shield-halved',  detail: 'Auditable, decision-grade results across highly complex revenue operations. Not just one step, the whole system.' },
-                { label: 'Scales With Complexity',   color: C.honey,    icon: 'fa-arrow-trend-up', detail: 'More advisors, more products, more pricing variation. The platform absorbs it without adding proportional operational drag.' },
+                { label: 'Share opportunities', color: C.mandarin,    icon: 'fa-share',                      detail: 'Unlock new streams and expand your market reach.' },
+                { label: 'Win together',        color: C.mandarin,    icon: 'fa-people-arrows',              detail: 'Access co-selling opportunities and partner incentives.' },
+                { label: 'Enable success',      color: C.mandarin,    icon: 'fa-person-arrow-up-from-line',  detail: 'Leverage training, tools, and dedicated partner support.' },
+                { label: 'Innovate together',   color: C.mandarin,    icon: 'fa-lightbulb',                  detail: 'Build, integrate, and shape the future of data intelligence.' },
               ].map((item, i) => (
                 <Reveal key={item.label} delay={i * 70}>
                   <li className="pa-bullet-row">
@@ -205,6 +204,146 @@ function WhyPartners(){
   )
 }
 
+const ACCENT = '#ED65D0'
+const FEATURES = [
+  { icon: 'fa-check-to-slot', title: 'Apply', body: 'Tell us about your business and goals.', count: '01' },
+  { icon: 'fa-magnifying-glass-chart', title: 'Review', body: 'Our team reviesubmission an', count: '02' },
+]
+const CAROUSEL_DURATION = 3200
+
+function FeaturesCarousel({ accent }: { accent: string }) {
+  const { ref, inView } = useInView(0.05)
+  const { isMobile, isTablet } = useBreakpoint()
+  const N = FEATURES.length
+  const [active, setActive] = useState(0)
+  const [fillPct, setFillPct] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const rafRef   = useRef<number>(0)
+  const startRef = useRef<number>(Date.now())
+  const dragRef  = useRef({ down: false, startX: 0, moved: false })
+  const aRgb = '237,101,208'
+
+  const prev = useCallback(() => { setActive(a => a - 1); setFillPct(0); startRef.current = Date.now() }, [])
+  const next = useCallback(() => { setActive(a => a + 1); setFillPct(0); startRef.current = Date.now() }, [])
+
+  useEffect(() => {
+    if (paused) { cancelAnimationFrame(rafRef.current); return }
+    startRef.current = Date.now()
+    const tick = () => {
+      const elapsed = Date.now() - startRef.current
+      setFillPct(Math.min(100, (elapsed / CAROUSEL_DURATION) * 100))
+      if (elapsed >= CAROUSEL_DURATION) { setActive(a => a + 1); setFillPct(0); startRef.current = Date.now() }
+      rafRef.current = requestAnimationFrame(tick)
+    }
+    rafRef.current = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(rafRef.current)
+  }, [paused, active])
+
+  const onPointerDown = (e: React.PointerEvent) => { dragRef.current = { down: true, startX: e.clientX, moved: false }; (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); setPaused(true) }
+  const onPointerMove = (e: React.PointerEvent) => { if (!dragRef.current.down) return; if (Math.abs(e.clientX - dragRef.current.startX) > 8) dragRef.current.moved = true }
+  const onPointerUp = (e: React.PointerEvent) => { if (!dragRef.current.down) return; const dx = e.clientX - dragRef.current.startX; if (Math.abs(dx) > 40) dx < 0 ? next() : prev(); dragRef.current.down = false; setFillPct(0); startRef.current = Date.now(); setPaused(false) }
+
+  const f = FEATURES[((active % N) + N) % N]
+  const sectionPad = isMobile ? '64px 0' : '100px 0'
+  const innerPad   = isMobile ? '0 20px' : isTablet ? '0 32px' : '0 48px'
+  const gridCols   = isTablet ? '1fr' : '1.04fr 1.55fr'
+
+  return (
+    <section ref={ref as React.RefObject<HTMLElement>} aria-label="Platform features" style={{ background: C.bg, padding: sectionPad, position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', top: '-5%', left: '20%', width: 700, height: 400, pointerEvents: 'none', background: `radial-gradient(ellipse, ${accent}0f 0%, transparent 60%)` }} aria-hidden="true" />
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: innerPad }}>
+        <div style={{ display: 'grid', gridTemplateColumns: gridCols, gap: isTablet ? '32px' : '40px', alignItems: 'center' }}>
+          <div style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(16px)', transition: 'opacity 0.6s ease, transform 0.6s ease' }}>
+            <Eyebrow color={C.pink}>HOW IT WORKS</Eyebrow>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 700, lineHeight: 1.08, letterSpacing: '-0.03em', color: C.text, marginBottom: 16 }}>
+              Your journey<br /><span style={{ color: C.pink }}>to partnership</span>
+            </h2>
+            <p style={{ fontSize: '0.9375rem', color: C.muted, lineHeight: 1.75, maxWidth: 360, marginBottom: 32 }}>A simple process to get started and set your partnership in motion.</p>
+            <div style={{ display: 'flex', gap: 12 }}>
+              {[{ html: '&#8592;', fn: prev, aria: 'Previous feature' }, { html: '&#8594;', fn: next, aria: 'Next feature' }].map(({ html, fn, aria }) => (
+                <button key={aria} onClick={() => { fn(); setPaused(true); setTimeout(() => setPaused(false), 4000) }}
+                  style={{ width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'transparent', border: `1px solid ${C.border}`, color: C.muted, fontSize: 16, cursor: 'pointer', transition: 'border-color 0.2s, color 0.2s' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = accent; (e.currentTarget as HTMLElement).style.color = accent }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = C.border; (e.currentTarget as HTMLElement).style.color = C.muted }}
+                  aria-label={aria} dangerouslySetInnerHTML={{ __html: html }} />
+              ))}
+            </div>
+          </div>
+
+          {isTablet ? (
+            // tablet: no top accent bar, no icon bg/border
+            <div style={{ background: `rgba(${aRgb},0.07)`, border: `1px solid ${accent}`, padding: '28px 24px 24px', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start', marginBottom: 18 }}>
+                <i className={`fa-solid ${f.icon}`} style={{ color: accent, fontSize: 20 }} aria-hidden="true" />
+              </div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: C.text, marginBottom: 10 }}>{f.title}</div>
+              <p style={{ fontSize: 13, color: C.muted, lineHeight: 1.7, margin: 0 }}>{f.body}</p>
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 2, background: `rgba(${aRgb},0.12)` }} aria-hidden="true">
+                <div style={{ height: '100%', width: `${fillPct}%`, background: accent, transition: 'none' }} />
+              </div>
+            </div>
+          ) : (
+            // desktop: carousel, no top accent bar, no icon bg/border, icon fontSize 20
+            <div role="region" aria-label="Features carousel" aria-live="polite"
+              style={{ overflow: 'hidden', position: 'relative', cursor: 'grab', height: 320 }}
+              onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerUp}
+              onMouseEnter={() => setPaused(true)} onMouseLeave={() => { setFillPct(0); startRef.current = Date.now(); setPaused(false) }}>
+              {Array.from({ length: 9 }, (_, k) => k - 4).map((offset, index) => {
+                const fi = ((active + offset) % N + N) % N
+                const feat = FEATURES[fi]
+                const isCenter = offset === 0
+                const CARD_W = 340, CARD_GAP = 20
+                return (
+                  <div key={`slot-${offset}`}
+                    onClick={() => { if (!dragRef.current.moved && !isCenter) setActive(a => a + offset) }}
+                    aria-hidden={!isCenter}
+                    style={{ position: 'absolute', top: 0, left: 0, width: CARD_W, height: '100%', padding: '32px 28px 20px', boxSizing: 'border-box', background: isCenter ? `rgba(${aRgb},0.07)` : C.surface, border: `1px solid ${isCenter ? accent : C.border}`, overflow: 'hidden', opacity: Math.abs(offset) <= 1 ? (isCenter ? 1 : 0.5) : 0, transform: `translateX(${offset * (CARD_W + CARD_GAP)}px)`, transition: 'opacity 0.35s ease, border-color 0.35s ease, background 0.35s ease, transform 0.45s cubic-bezier(0.4,0,0.2,1)', cursor: isCenter ? 'default' : 'pointer', pointerEvents: Math.abs(offset) > 2 ? 'none' : 'auto' }}>
+                    {/* no top accent bar */}
+                    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start', marginBottom: 20 }}>
+                      <i className={`fa-solid ${feat.icon}`} style={{ color: accent, fontSize: 20 }} aria-hidden="true" />
+                    </div>
+                    <div style={{ fontSize: 15, fontWeight: 700, color: C.text, marginBottom: 10, lineHeight: 1.3 }}>{feat.title}</div>
+                    <p style={{ fontSize: 13, color: C.muted, lineHeight: 1.7, margin: 0 }}>{feat.body}</p>
+                    <div style={{ fontSize: 'clamp(6rem,15vw,10rem)', fontWeight: 100, paddingTop: '3vh', float: 'right', lineHeight: 1, letterSpacing: '-0.04em', color: C.pink, margin: 0 }} aria-label={feat.count}>{feat.count}</div>
+                    {isCenter && (
+                      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 2, background: `rgba(${aRgb},0.12)` }} aria-hidden="true">
+                        <div style={{ height: '100%', width: `${fillPct}%`, background: accent, transition: 'none' }} />
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+              <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: 80, background: `linear-gradient(to right, transparent, ${C.bg})`, pointerEvents: 'none', zIndex: 10 }} aria-hidden="true" />
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function LastBlock() {
+  const { isMobile, isTablet } = useBreakpoint()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setTimeout(() => setMounted(true), 80) }, [])
+  return (
+    <section style={{ position: 'relative', overflow: 'hidden', background: 'radial-gradient(ellipse 120% 80% at 50% 10%, #1a1e2e 0%, #140f0c 55%)', minHeight: isMobile ? 'auto' : '65vh', display: 'flex', alignItems: 'center' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '20px' : isTablet ? '32px' : '48px', width: '100%', textAlign: 'center', position: 'relative', zIndex: 2, paddingTop: isMobile ? 112 : 160, paddingBottom: isMobile ? 96 : 130 }}>
+        <h2 style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.028em', color: C.text, maxWidth: 820, margin: '0 auto 24px', opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.08s, transform 0.7s ease 0.08s' }}>
+          Let s build<br />
+          <span style={{ background: SUNSET, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>What’s next</span>
+        </h2>
+        <p style={{ fontSize: isMobile ? '1rem' : '1.125rem', color: C.muted, lineHeight: 1.75, maxWidth: 600, margin: '0 auto 44px', opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.16s, transform 0.7s ease 0.16s' }}>
+          Join the PureFacts Partner Program and be part of an ecosystem that's transforming how the world works with data.
+        </p>
+        <div style={{ opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.24s, transform 0.7s ease 0.24s' }}>
+          <Link href="/contact" className="btn-primary">Become a Partner</Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function ContentParnerClient() {
 
   return (
@@ -212,6 +351,8 @@ export default function ContentParnerClient() {
       <Hero />
       <ChooseYourPath />
       <WhyPartners />
+      <FeaturesCarousel accent={ACCENT}/>
+      <LastBlock />
     </div>
   )
 }
