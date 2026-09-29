@@ -99,6 +99,7 @@ const NAV: NavItem[] = [
       { label: 'Leadership', href: '/about/leadership', description: 'Meet the executives leading PureFacts forward.' },
       { label: 'Careers',    href: '/about/careers',    description: 'Join a team building the future of WealthTech.' },
       { label: 'Newsroom',   href: '/about/newsroom',   description: 'Press releases, coverage and company updates.' },
+      { label: 'Partner',    href: '/about/partner',    description: 'Partnerships designed for the way you work.' },
     ],
   },
   {
