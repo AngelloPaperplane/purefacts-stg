@@ -24,6 +24,8 @@ const C = {
   honey:   '#ffb30c',
   indigo:  '#4760FF',
   text:    '#f4f4f4',
+  mandarin:'#fb5607',
+  body:    'rgba(244,244,244,0.75)',
   muted:   'rgba(244,244,244,0.75)',
   subtle:  'rgba(244,244,244,0.45)',
   border:  'rgba(255,255,255,0.07)',
@@ -73,9 +75,9 @@ function ChooseYourPath(){
   const { isMobile, isTablet } = useBreakpoint()
   const { ref, inView } = useInView()
   const ITEMS = [
-    { label:'Organic Growth',  stat:'2x',    statSub:'organic growth rate potential', body:'Help advisors make better pricing, retention, and growth decisions. Every interaction becomes an opportunity to deepen the relationship and expand wallet share.',                  points:['Better advisor pricing discipline','Reduced client churn','Wallet share expansion','Advisor-level growth actions'] },
-    { label:'EBITDA Margin',   stat:'4 bps', statSub:'efficiency gains documented',   body:'Capture more earned revenue, reduce leakage, and improve pricing discipline. The opportunity is already inside the business, waiting to be surfaced.',                              points:['Revenue leakage elimination','Billing accuracy at scale','Pricing gap closure','Operational drag reduction'] },
-    { label:'Enterprise Value',stat:'100%', statSub:'Gross Profit',       body:'Turn better revenue performance into stronger EBITDA and higher firm value. When revenue performance compounds, so does the valuation multiple.',                                    points:['EBITDA margin improvement','Scalable revenue infrastructure','Governance and auditability','Board-level performance visibility'] },
+    { label:'Referral Partner',  stat:'fa-solid fa-user-plus',    statSub:'', body:'Refer PureFacts and earn rewards for opportunities that convert.', points:[] },
+    { label:'Implementation Partner',   stat:'fa-solid fa-user-gear', statSub:'',   body:'Deliver successful PureFacts implementations and drive customer outcomes.', points:[] },
+    { label:'Technology & Integration Partner',stat:'fa-solid fa-user-shield', statSub:'',       body:'Build integrations and extensions that enhance the PureFacts platform.',  points:[] },
   ]
   return (
     <section ref={ref as React.RefObject<HTMLElement>} style={{ background:C.bg, padding:isMobile ? '64px 0' : '100px 0', position:'relative', overflow:'hidden' }}>
@@ -87,11 +89,12 @@ function ChooseYourPath(){
 
       <div style={{ maxWidth:1280, margin:'0 auto', padding:isMobile ? '0 20px' : isTablet ? '0 32px' : '0 48px' }}>
         <div style={{ marginBottom:isMobile ? 36 : 56, opacity:inView?1:0, transform:inView?'translateY(0)':'translateY(16px)', transition:'opacity 0.6s ease, transform 0.6s ease' }}>
-          <h2 style={{ fontSize:'clamp(1.8rem, 3vw, 2.6rem)', fontWeight:700, lineHeight:1.12, letterSpacing:'-0.025em', color:C.text, maxWidth:640, marginBottom:14 }}>
-            Better revenue performance compounds into{' '}
-            <span style={{ color:C.azure }}>enterprise value.</span>
+          <div style={{ fontSize:14, fontWeight:700, letterSpacing:'0.18em',textAlign:'center', textTransform:'uppercase', color:C.azure, marginBottom:14 }}>CHOOSE YOUR PATH</div>
+          <h2 style={{ fontSize:'clamp(1.8rem, 3vw, 2.6rem)', fontWeight:700, lineHeight:1.12, letterSpacing:'-0.025em', color:C.text, maxWidth:640, margin:'14px auto' }}>
+            Partnerships{' '}
+            <span style={{ color:C.azure }}>designed</span><br/>for the way you work
           </h2>
-          <p style={{ fontSize:'1rem', color:C.muted, lineHeight:1.7, maxWidth:560 }}>
+          <p style={{ fontSize:'1rem', color:C.muted, lineHeight:1.7, maxWidth:560, margin:'0 auto' }}>
             When firms capture more earned revenue, improve pricing discipline, and align advisor behavior, the impact compounds across top-line growth, EBITDA, and enterprise value.
           </p>
         </div>
@@ -100,7 +103,7 @@ function ChooseYourPath(){
           {ITEMS.map((item, i) => (
             <div key={item.label} style={{ padding:isMobile ? '32px 24px' : '48px 40px', background:'rgba(59,132,255,0.06)', border:`1px solid rgba(59,132,255,0.18)`, position:'relative', overflow:'hidden', opacity:inView?1:0, transform:inView?'translateY(0)':'translateY(24px)', transition:`opacity 0.55s ease ${0.1+i*0.1}s, transform 0.55s ease ${0.1+i*0.1}s` }}>
               <div style={{ position:'absolute', top:0, left:0, right:0, height:2, background:C.azure }} aria-hidden="true" />
-              <div style={{ fontSize:'clamp(2.5rem, 5vw, 3.75rem)', fontWeight:800, color:C.azure, letterSpacing:'-0.05em', lineHeight:1, marginBottom:6 }}>{item.stat}</div>
+              <div className={item.stat} style={{ fontSize:'clamp(2.5rem, 5vw, 3.75rem)', fontWeight:800, color:C.azure, letterSpacing:'-0.05em', lineHeight:1, marginBottom:6 }}></div>
               <div style={{ fontSize:11, color:'rgba(59,132,255,0.7)', fontWeight:600, textTransform:'uppercase', letterSpacing:'0.12em', marginBottom:24 }}>{item.statSub}</div>
               <div style={{ fontSize:14, fontWeight:700, color:C.text, letterSpacing:'-0.01em', marginBottom:12 }}>{item.label}</div>
               <p style={{ fontSize:'0.875rem', color:C.muted, lineHeight:1.7, marginBottom:24 }}>{item.body}</p>
@@ -120,12 +123,95 @@ function ChooseYourPath(){
   )
 }
 
+function useReveal(threshold = 0.08) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const el = ref.current; if (!el) return
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect() } }, { threshold })
+    obs.observe(el); return () => obs.disconnect()
+  }, [threshold])
+  return { ref, visible }
+}
+
+function Reveal({ children, delay = 0, style }: { children: React.ReactNode; delay?: number; style?: React.CSSProperties }) {
+  const { ref, visible } = useReveal()
+  return (
+    <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(22px)', transition: `opacity 0.65s ease ${delay}ms, transform 0.65s ease ${delay}ms`, ...style }}>
+      {children}
+    </div>
+  )
+}
+function Eyebrow({ children, color = C.azure }: { children: React.ReactNode; color?: string }) {
+  return <p style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.20em', color, margin: '0 0 14px' }}>{children}</p>
+}
+
+function WhyPartners(){
+  const { isMobile, isTablet } = useBreakpoint()
+  const sectionPad = isMobile ? '56px 0' : '90px 0'
+  const heroPad = isMobile ? '48px 0 48px' : '90px 0 72px'
+  const innerPad = isMobile ? '0 20px' : isTablet ? '0 32px' : '0 48px'
+  const twoCols = isTablet ? '1fr' : 'repeat(2, minmax(0, 1fr))'
+  const heroGap = isMobile ? '24px' : isTablet ? '32px' : '80px'
+  const sectionGap = isMobile ? '24px' : isTablet ? '32px' : '80px'
+  const cardGridCols = isMobile ? '1fr' : '1fr 1fr'
+
+  return(
+    <section style={{ background: C.bg, position: 'relative', overflow: 'hidden', padding: sectionPad }} aria-label="Why a connected platform matters">
+        <div aria-hidden="true" style={{ position: 'absolute', top: '10%', right: '0%', width: 600, height: 500, pointerEvents: 'none', background: 'radial-gradient(ellipse, rgba(59,132,255,0.06) 0%, transparent 60%)' }} />
+
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: innerPad }}>
+          <div style={{ display: 'grid', gridTemplateColumns: twoCols, gap: sectionGap, alignItems: 'start' }}>
+
+            {/* Left: eyebrow, H2, body */}
+            <div>
+              <Reveal>
+                <Eyebrow color={C.azure}>WHY PARTNER WITH PUREFACTS</Eyebrow>
+                <h2 style={{ fontSize: 'clamp(1.8rem,3vw,2.6rem)', fontWeight: 700, color: C.text, letterSpacing: '-0.025em', lineHeight: 1.18, margin: 0 }}>
+                  More value for your{' '}
+                  <span style={{ color: C.azure }}>Everything Downstream Suffers</span>
+                </h2>
+              </Reveal>
+              <Reveal delay={70}>
+                <p style={{ marginTop: 18, fontSize: 16, color: C.body, lineHeight: 1.75 }}>
+                  When moving parts are spread across disconnected systems, firms lose visibility. Manual work increases. Confidence drops. Processes slow down. What should be a strategic revenue engine starts to feel fragmented and difficult to trust. PureFacts takes a different approach.
+                </p>
+              </Reveal>
+            </div>
+
+            {/* Right: icons list (moved from below body, graphic removed) */}
+            <ul style={{ margin: 0, padding: 0, listStyle: 'none', alignSelf: 'start' }}>
+              {[
+                { label: 'One Connected Foundation', color: C.azure,    icon: 'fa-link',          detail: 'Billing, compensation, reporting, and control points share the same data model. No reconciliation between systems.' },
+                { label: 'Greater Consistency',      color: C.mandarin, icon: 'fa-equals',         detail: 'Fee logic, payout rules, and reporting outputs behave the same way across every team, product, and region.' },
+                { label: 'Trustworthy Outputs',      color: C.azure,    icon: 'fa-shield-halved',  detail: 'Auditable, decision-grade results across highly complex revenue operations. Not just one step, the whole system.' },
+                { label: 'Scales With Complexity',   color: C.honey,    icon: 'fa-arrow-trend-up', detail: 'More advisors, more products, more pricing variation. The platform absorbs it without adding proportional operational drag.' },
+              ].map((item, i) => (
+                <Reveal key={item.label} delay={i * 70}>
+                  <li className="pa-bullet-row">
+                    <i className={`fa-solid ${item.icon}`} style={{ color: item.color, fontSize: 18, flexShrink: 0, width: 20, textAlign: 'center' as const, marginTop: 2 }} aria-hidden="true" />
+                    <div>
+                      <p style={{ fontSize: 15, fontWeight: 700, color: C.text, margin: 0 }}>{item.label}</p>
+                      <p style={{ marginTop: 4, fontSize: 15, color: C.body, lineHeight: 1.7, margin: '4px 0 0' }}>{item.detail}</p>
+                    </div>
+                  </li>
+                </Reveal>
+              ))}
+            </ul>
+
+          </div>
+        </div>
+      </section>
+  )
+}
+
 export default function ContentParnerClient() {
 
   return (
     <div style={{ background:C.bg, fontFamily:"'Carlito','Segoe UI',sans-serif", position:'relative' }}>
       <Hero />
       <ChooseYourPath />
+      <WhyPartners />
     </div>
   )
 }
