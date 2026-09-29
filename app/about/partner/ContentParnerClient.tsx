@@ -207,7 +207,9 @@ function WhyPartners(){
 const ACCENT = '#ED65D0'
 const FEATURES = [
   { icon: 'fa-check-to-slot', title: 'Apply', body: 'Tell us about your business and goals.', count: '01' },
-  { icon: 'fa-magnifying-glass-chart', title: 'Review', body: 'Our team reviesubmission an', count: '02' },
+  { icon: 'fa-magnifying-glass-chart', title: 'Review', body: 'Our team reviews your submission and follows up.', count: '02' },
+  { icon: 'fa-plane-departure', title: 'Onboard', body: 'Complete orboarding and gain partner access.', count: '03' },
+  { icon: 'fa-angles-up', title: 'Grow', body: 'Start colaborating, diving value and growing together.', count: '04' },
 ]
 const CAROUSEL_DURATION = 3200
 
