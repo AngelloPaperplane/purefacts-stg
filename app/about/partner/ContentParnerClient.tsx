@@ -322,6 +322,7 @@ function FeaturesCarousel({ accent }: { accent: string }) {
   )
 }
 
+
 function LastBlock() {
   const { isMobile, isTablet } = useBreakpoint()
   const [mounted, setMounted] = useState(false)
