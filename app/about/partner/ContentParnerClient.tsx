@@ -3,7 +3,7 @@
 
 
 import { useEffect, useRef, useState, useCallback } from 'react'
-import Link from 'next/link'
+import HubspotModal from '@/components/resources/HubspotModal';
 
 function useBreakpoint() {
   const [w, setW] = useState(1280)
@@ -34,12 +34,13 @@ const C = {
 
 const SUNSET = 'linear-gradient(135deg,#FACC22 0%,#FB5607 35%,#4760FF 70%,#0DCCFF 100%)'
 
+/*
 function Hero() {
   const { isMobile, isTablet } = useBreakpoint()
   const [mounted, setMounted] = useState(false)
   useEffect(() => { setTimeout(() => setMounted(true), 80) }, [])
   return (
-    <section style={{ position: 'relative', overflow: 'hidden', background: 'radial-gradient(ellipse 120% 80% at 50% 10%, #1a1e2e 0%, #140f0c 55%)', minHeight: isMobile ? 'auto' : '65vh', display: 'flex', alignItems: 'flex-start', backgroundImage: 'url("/background/fondo.jpeg")', backgroundPosition: 'center center', backgroundSize: 'cover' }}>
+    <section style={{ position: 'relative', overflow: 'hidden', background: 'radial-gradient(ellipse 120% 80% at 50% 10%, #1a1e2e 0%, #140f0c 55%)', minHeight: isMobile ? 'auto' : '65vh', display: 'flex', alignItems: 'flex-start', backgroundImage: 'url("/background/fondo_35.jpg")', backgroundPosition: 'center center', backgroundSize: 'cover' }}>
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 180, background: `linear-gradient(to bottom, transparent, ${C.bg})`, pointerEvents: 'none', zIndex: 1 }} aria-hidden="true" />
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0 20px' : isTablet ? '0 32px' : '0 48px', width: '100%', textAlign: 'center', position: 'relative', zIndex: 2, paddingTop: isMobile ? 112 : 160, paddingBottom: isMobile ? 96 : 130 }}>
         <div style={{ fontSize:14, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:C.azure, marginBottom:14 }}>Connected by design</div>
@@ -55,6 +56,51 @@ function Hero() {
         </div>
       </div>
     </section>
+  )
+}
+*/
+
+function Hero() {
+  const { isMobile, isTablet } = useBreakpoint()
+  const [mounted, setMounted] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  useEffect(() => { 
+    setTimeout(() => setMounted(true), 80) 
+  }, [])
+
+  return (
+    <>
+      <section style={{ position: 'relative', overflow: 'hidden', background: 'radial-gradient(ellipse 120% 80% at 50% 10%, #1a1e2e 0%, #140f0c 55%)', minHeight: isMobile ? 'auto' : '65vh', display: 'flex', alignItems: 'flex-start', backgroundImage: 'url("/background/fondo_35.jpg")', backgroundPosition: 'center center', backgroundSize: 'cover' }}>
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 180, background: `linear-gradient(to bottom, transparent, ${C.bg})`, pointerEvents: 'none', zIndex: 1 }} aria-hidden="true" />
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0 20px' : isTablet ? '0 32px' : '0 48px', width: '100%', textAlign: 'center', position: 'relative', zIndex: 2, paddingTop: isMobile ? 112 : 160, paddingBottom: isMobile ? 96 : 130 }}>
+          <div style={{ fontSize:14, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:C.azure, marginBottom:14 }}>Connected by design</div>
+          <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.028em', color: C.text, maxWidth: 820, margin: '0 auto 24px', opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.08s, transform 0.7s ease 0.08s' }}>
+            Stronger together.<br />
+            <span style={{ background: SUNSET, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Built for impact.</span>
+          </h1>
+          <p style={{ fontSize: isMobile ? '1.125rem' : '1.5rem', color: C.text, lineHeight: 1.75, maxWidth: 600, margin: '0 auto 44px', opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.16s, transform 0.7s ease 0.16s' }}>
+            The PureFacts Partner Program empowers organizations to create more value, accelerate growth, and deliver exceptional results-together.
+          </p>
+          <div style={{ opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.24s, transform 0.7s ease 0.24s' }}>
+            <button 
+              onClick={() => setIsModalOpen(true)} 
+              className="btn-primary"
+              style={{ cursor: 'pointer' }}
+            >
+              Become a Partner
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <HubspotModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)}
+        portalId="3218774" 
+        formId="647e0e88-54fc-4271-86ed-33f5b6cb2c65"
+      />
+    </>
   )
 }
 
@@ -234,7 +280,8 @@ function FeaturesCarousel({ accent }: { accent: string }) {
     const tick = () => {
       const elapsed = Date.now() - startRef.current
       setFillPct(Math.min(100, (elapsed / CAROUSEL_DURATION) * 100))
-      if (elapsed >= CAROUSEL_DURATION) { setActive(a => a + 1); setFillPct(0); startRef.current = Date.now() }
+      //if (elapsed >= CAROUSEL_DURATION) { setActive(a => a + 1); setFillPct(0); startRef.current = Date.now() }
+      if (elapsed >= CAROUSEL_DURATION) { setFillPct(0); startRef.current = Date.now() }
       rafRef.current = requestAnimationFrame(tick)
     }
     rafRef.current = requestAnimationFrame(tick)
@@ -328,22 +375,37 @@ function FeaturesCarousel({ accent }: { accent: string }) {
 function LastBlock() {
   const { isMobile, isTablet } = useBreakpoint()
   const [mounted, setMounted] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   useEffect(() => { setTimeout(() => setMounted(true), 80) }, [])
   return (
+    <>
     <section style={{ position: 'relative', overflow: 'hidden', background: 'radial-gradient(ellipse 120% 80% at 50% 10%, #1a1e2e 0%, #140f0c 55%)', minHeight: isMobile ? 'auto' : '65vh', display: 'flex', alignItems: 'center' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '20px' : isTablet ? '32px' : '48px', width: '100%', textAlign: 'center', position: 'relative', zIndex: 2, paddingTop: isMobile ? 112 : 160, paddingBottom: isMobile ? 96 : 130 }}>
         <h2 style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.028em', color: C.text, maxWidth: 820, margin: '0 auto 24px', opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.08s, transform 0.7s ease 0.08s' }}>
-          Let s build<br />
-          <span style={{ background: SUNSET, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>What’s next</span>
+          Let’s build<br />
+          <span style={{ background: SUNSET, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>what’s next</span>
         </h2>
         <p style={{ fontSize: isMobile ? '1rem' : '1.125rem', color: C.muted, lineHeight: 1.75, maxWidth: 600, margin: '0 auto 44px', opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.16s, transform 0.7s ease 0.16s' }}>
           Join the PureFacts Partner Program and be part of an ecosystem that's transforming how the world works with data.
         </p>
         <div style={{ opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.24s, transform 0.7s ease 0.24s' }}>
-          <Link href="/contact" className="btn-primary">Become a Partner</Link>
+          <button 
+              onClick={() => setIsModalOpen(true)} 
+              className="btn-primary"
+              style={{ cursor: 'pointer' }}
+            >
+              Become a Partner
+            </button>
         </div>
       </div>
     </section>
+    <HubspotModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)}
+        portalId="3218774" 
+        formId="647e0e88-54fc-4271-86ed-33f5b6cb2c65"
+      />
+    </>
   )
 }
 
