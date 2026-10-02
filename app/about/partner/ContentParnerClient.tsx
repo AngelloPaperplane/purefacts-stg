@@ -275,6 +275,7 @@ function FeaturesCarousel({ accent }: { accent: string }) {
   const next = useCallback(() => { setActive(a => a + 1); setFillPct(0); startRef.current = Date.now() }, [])
 
   useEffect(() => {
+    return;
     if (paused) { cancelAnimationFrame(rafRef.current); return }
     startRef.current = Date.now()
     const tick = () => {
