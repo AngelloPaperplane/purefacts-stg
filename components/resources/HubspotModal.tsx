@@ -1,7 +1,20 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-export default function HubspotModal({ isOpen, onClose, portalId, formId }) {
+declare global {
+  interface Window {
+    hbspt: any;
+  }
+}
+
+interface HubspotModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  portalId: string;
+  formId: string;
+}
+
+export default function HubspotModal({ isOpen, onClose, portalId, formId }:HubspotModalProps) {
   
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,35 +32,77 @@ export default function HubspotModal({ isOpen, onClose, portalId, formId }) {
           window.hbspt.forms.create({
             portalId: portalId,
             formId: formId,
-            target: '#hubspot-form-wrapper',
+            target: '#hubspot-form-target',
+            cssClass: 'hs-contact-form',
+            css: `
+              .hs-form-wrapper .hs-form fieldset {
+                max-width: 100% !important;
+              }
+
+              .hs-form-wrapper .hs-form .hs-form-field label {
+                color: #ffffff;
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                margin-bottom: 0.375rem;
+                display: block;
+              }
+
+              .hs-form-wrapper .hs-form input[type="text"],
+              .hs-form-wrapper .hs-form input[type="email"],
+              .hs-form-wrapper .hs-form input[type="tel"],
+              .hs-form-wrapper .hs-form textarea {
+                width: 100%;
+                background: #ffffff;
+                border: 1px solid #d1d5db;
+                border-radius: 0;
+                color: #111111;
+                padding: 0.625rem 0.75rem;
+                font-size: 0.875rem;
+                outline: none;
+                transition: border-color 0.2s;
+              }
+
+              .hs-form-wrapper .hs-form input:focus,
+              .hs-form-wrapper .hs-form textarea:focus {
+                border-color: #4760FF;
+              }
+
+              .hs-form-wrapper .hs-form textarea {
+                min-height: 100px;
+                resize: vertical;
+              }
+
+              .hs-form-wrapper .hs-form .hs-button {
+                background: #111111;
+                color: #ffffff;
+                border: 2px solid #4760FF;
+                padding: 0.625rem 1.5rem;
+                font-size: 0.875rem;
+                font-weight: 600;
+                cursor: pointer;
+                border-radius: 0;
+                transition: background 0.2s, border-color 0.2s;
+                width: 100%;
+                margin-top: 0.5rem;
+              }
+
+              .hs-form-wrapper .hs-form .hs-button:hover {
+                border-image: linear-gradient(90deg, #FACC22, #FB5607, #4760FF, #0DCCFF) 1;
+              }
+
+              .hs-form-wrapper .hs-error-msgs label {
+                color: #FB5607 !important;
+                font-size: 0.75rem !important;
+                text-transform: none !important;
+                letter-spacing: 0 !important;
+              }
+            `,
             // Hubspot Ready
             onFormReady: () => {
               setIsLoading(false);
             },
-            css: `
-              .hs-form, .hs-form label, .hs-form .hs-richtext {
-                color: #ffffff !important;
-                font-family: inherit !important;
-              }
-              .hs-form .hs-input {
-                background-color: #222222 !important;
-                border: 1px solid #444444 !important;
-                color: #ffffff !important;
-              }
-              .hs-form .hs-button {
-                background-color: #E55B32 !important;
-                border-color: #E55B32 !important;
-                color: #ffffff !important;
-                border-radius: 4px !important;
-                font-weight: bold !important;
-                width: 100% !important;
-                transition: background-color 0.3s ease !important;
-              }
-              .hs-form .hs-button:hover {
-                background-color: #c44722 !important;
-                border-color: #c44722 !important;
-              }
-            `
           });
         }
       };
@@ -112,7 +167,8 @@ export default function HubspotModal({ isOpen, onClose, portalId, formId }) {
 
         {/* Hide OnLoad form */}
         <div 
-          id="hubspot-form-wrapper" 
+          id="hubspot-form-target"
+          className="hs-form-wrapper"
           style={{ 
             opacity: isLoading ? 0 : 1, 
             transition: 'opacity 0.4s ease' 
