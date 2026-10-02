@@ -98,6 +98,10 @@ export default function HubspotModal({ isOpen, onClose, portalId, formId }:Hubsp
                 text-transform: none !important;
                 letter-spacing: 0 !important;
               }
+
+              .hs-form-wrapper .submitted-message {
+                  color: white;
+              }
             `,
             // Hubspot Ready
             onFormReady: () => {

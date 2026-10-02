@@ -103,7 +103,7 @@ const NAV: NavItem[] = [
       { label: 'Leadership', href: '/about/leadership', description: 'Meet the executives leading PureFacts forward.', icon: 'fa-solid fa-people-group' },
       { label: 'Careers', href: '/about/careers', description: 'Join a team building the future of growth.', icon: 'fa-solid fa-briefcase' },
       { label: 'Newsroom', href: '/about/newsroom', description: 'Press releases, coverage and company updates.', icon: 'fa-solid fa-newspaper' },
-      { label: 'Partner', href: '/about/partner', description: 'Partnerships designed for the way you work.', icon: 'fa-solid fa-users-viewfinder' },
+      { label: 'Partners', href: '/about/partners', description: 'Partnerships designed for the way you work.', icon: 'fa-solid fa-users-viewfinder' },
     ],
   },
   {
