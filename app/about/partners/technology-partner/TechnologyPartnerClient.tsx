@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from 'react'
 import HubspotModal from '@/components/resources/HubspotModal';
 import Link from 'next/link'
+import Image from 'next/image'
 
 const C = {
   bg:       '#140f0c',
@@ -103,8 +104,8 @@ function RevenueLedgerCanvas({aRgb}:{aRgb:string}) {
 
 
 function Hero(){
-  const aRgb = '59,132,255'
-  const accent = '#3b84ff'
+  const aRgb = '237,101,208'
+  const accent = '#ED65D0'
   const [mounted,setMounted]=useState(false)
   const { isMobile, isTablet } = useBreakpoint()
   useEffect(()=>{setTimeout(()=>setMounted(true),80)},[])
@@ -131,7 +132,10 @@ function Hero(){
               >
                 Become a Partner
               </button>
-            <Link href="/contact" className="btn-primary" style={{borderColor:accent}}>Get in contact</Link>
+            <Link href="/contact" className="btn-primary" style={{borderColor:accent}}>Contact Us</Link>
+          </div>
+          <div style={{ position: 'absolute', right: '20%', top: '5%' }}>
+            <Image src="/icons/rosa.png" alt="imageLogo" width={150} height={150} style={{ objectFit: 'contain', objectPosition: 'left' }} />
           </div>
         </div>
       </section>

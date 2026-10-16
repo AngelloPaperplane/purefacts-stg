@@ -125,9 +125,9 @@ function ChooseYourPath(){
   const { isMobile, isTablet } = useBreakpoint()
   const { ref, inView } = useInView()
   const ITEMS = [
-    { label:'Referral Partner',  stat:'fa-solid fa-user-plus',    statSub:'', body:'Refer PureFacts and earn rewards for opportunities that convert.', points:[] },
-    { label:'Implementation Partner',   stat:'fa-solid fa-user-gear', statSub:'',   body:'Deliver successful PureFacts implementations and drive customer outcomes.', points:[] },
-    { label:'Technology & Integration Partner',stat:'fa-solid fa-user-shield', statSub:'',       body:'Build integrations and extensions that enhance the PureFacts platform.',  points:[] },
+    { label:'Referral Partner',  stat:'fa-solid fa-user-plus',    statSub:'', body:'Refer PureFacts and earn rewards for opportunities that convert.', link:'/about/partners/referral-partner'  },
+    { label:'Implementation Partner',   stat:'fa-solid fa-user-gear', statSub:'',   body:'Deliver successful PureFacts implementations and drive customer outcomes.', link:'/about/partners/implementation-partner' },
+    { label:'Technology & Integration Partner',stat:'fa-solid fa-user-shield', statSub:'',       body:'Build integrations and extensions that enhance the PureFacts platform.',  link:'/about/partners/technology-partner' },
   ]
   return (
     <section ref={ref as React.RefObject<HTMLElement>} style={{ background:C.bg, padding:isMobile ? '64px 0' : '100px 0', position:'relative', overflow:'hidden' }}>
@@ -151,21 +151,15 @@ function ChooseYourPath(){
 
         <div style={{ display:'grid', gridTemplateColumns:isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap:'16px' }}>
           {ITEMS.map((item, i) => (
-            <div key={item.label} style={{ padding:isMobile ? '32px 24px' : '48px 40px', background:'rgba(59,132,255,0.06)', border:`1px solid rgba(59,132,255,0.18)`, position:'relative', overflow:'hidden', opacity:inView?1:0, transform:inView?'translateY(0)':'translateY(24px)', transition:`opacity 0.55s ease ${0.1+i*0.1}s, transform 0.55s ease ${0.1+i*0.1}s` }}>
-              <div style={{ position:'absolute', top:0, left:0, right:0, height:2, background:C.azure }} aria-hidden="true" />
-              <div className={item.stat} style={{ fontSize:'clamp(2.5rem, 5vw, 3.75rem)', fontWeight:800, color:C.azure, letterSpacing:'-0.05em', lineHeight:1, marginBottom:6 }}></div>
-              <div style={{ fontSize:11, color:'rgba(59,132,255,0.7)', fontWeight:600, textTransform:'uppercase', letterSpacing:'0.12em', marginBottom:24 }}>{item.statSub}</div>
-              <div style={{ fontSize:14, fontWeight:700, color:C.text, letterSpacing:'-0.01em', marginBottom:12 }}>{item.label}</div>
-              <p style={{ fontSize:'0.875rem', color:C.muted, lineHeight:1.7, marginBottom:24 }}>{item.body}</p>
-              <div style={{ display:'flex', flexDirection:'column', gap:9 }}>
-                {item.points.map((pt,j) => (
-                  <div key={j} style={{ display:'flex', alignItems:'center', gap:10 }}>
-                    <div style={{ width:5, height:5, borderRadius:'50%', background:'rgba(59,132,255,0.5)', flexShrink:0 }} aria-hidden="true" />
-                    <span style={{ fontSize:12.5, color:C.muted, lineHeight:1.5 }}>{pt}</span>
-                  </div>
-                ))}
+            <Link href={item.link}>
+              <div key={item.label} style={{ padding:isMobile ? '32px 24px' : '48px 40px', background:'rgba(59,132,255,0.06)', border:`1px solid rgba(59,132,255,0.18)`, position:'relative', overflow:'hidden', opacity:inView?1:0, transform:inView?'translateY(0)':'translateY(24px)', transition:`opacity 0.55s ease ${0.1+i*0.1}s, transform 0.55s ease ${0.1+i*0.1}s` }}>
+                <div style={{ position:'absolute', top:0, left:0, right:0, height:2, background:C.azure }} aria-hidden="true" />
+                <div className={item.stat} style={{ fontSize:'clamp(2.5rem, 5vw, 3.75rem)', fontWeight:800, color:C.azure, letterSpacing:'-0.05em', lineHeight:1, marginBottom:6 }}></div>
+                <div style={{ fontSize:11, color:'rgba(59,132,255,0.7)', fontWeight:600, textTransform:'uppercase', letterSpacing:'0.12em', marginBottom:24 }}>{item.statSub}</div>
+                <div style={{ fontSize:14, fontWeight:700, color:C.text, letterSpacing:'-0.01em', marginBottom:12 }}>{item.label}</div>
+                <p style={{ fontSize:'0.875rem', color:C.muted, lineHeight:1.7, marginBottom:24 }}>{item.body}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -305,7 +299,7 @@ function Expertise_powers(){
                   </span>
                 </Link>
               ) : (
-                <Link href={card.href} target='_blank' className="cx-related-card" style={{ flex: 1, border: `1px solid ${card.color}`, padding:'20px' }} aria-label={`${card.label}: ${card.desc}`}>
+                <Link href={card.href} target='_blank' className="cx-related-card" style={{ flex: 1, border: `1px solid ${card.color}`, padding: isMobile ? '24px 22px' : '28px 26px' }} aria-label={`${card.label}: ${card.desc}`}>
                   <div style={{ flexShrink: 0, marginBottom: 16 }}>
                     <Image src={card.image} alt="imageLogo" width={200} height={50} style={{ objectFit: 'contain',     maxHeight: '60px', objectPosition: 'left' }} />
                   </div>

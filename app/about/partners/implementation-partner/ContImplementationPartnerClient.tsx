@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from 'react'
 import HubspotModal from '@/components/resources/HubspotModal';
 import Link from 'next/link'
+import Image from 'next/image'
 
 const C = {
   bg:       '#140f0c',
@@ -131,7 +132,10 @@ function Hero(){
               >
                 Become a Partner
               </button>
-            <Link href="/contact" className="btn-primary" style={{borderColor:accent}}>Get in contact</Link>
+            <Link href="/contact" className="btn-primary" style={{borderColor:accent}}>Contact Us</Link>
+          </div>
+          <div style={{ position: 'absolute', right: '20%', top: '5%' }}>
+            <Image src="/icons/naranja.png" alt="imageLogo" width={150} height={150} style={{ objectFit: 'contain', objectPosition: 'left' }} />
           </div>
         </div>
       </section>
