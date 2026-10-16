@@ -12,9 +12,10 @@ interface HubspotModalProps {
   onClose: () => void;
   portalId: string;
   formId: string;
+  classRef? : string
 }
 
-export default function HubspotModal({ isOpen, onClose, portalId, formId }:HubspotModalProps) {
+export default function HubspotModal({ isOpen, onClose, portalId, formId, classRef }:HubspotModalProps) {
   
   const [isLoading, setIsLoading] = useState(true);
 

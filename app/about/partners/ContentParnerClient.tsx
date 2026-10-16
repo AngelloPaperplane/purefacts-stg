@@ -277,13 +277,13 @@ function Expertise_powers(){
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: innerPad }}>
         <Reveal>
           <h2 style={{ fontSize: 'clamp(1.5rem,2.5vw,2rem)', fontWeight: 700, color: C.text, letterSpacing: '-0.02em', margin: '0 0 8px' }}>Expertise that powers <span style={{ color: C.mandarin }}>revenue performance</span> </h2>
-          <p style={{ fontSize: 15, color: C.body, maxWidth: 560, margin: '0 0 36px' }}>We partner with leaders in technology, strategy and transformation to help wealth and asset management firms improve revenue performance and accelerate profitable growth.</p>
+          <p style={{ fontSize: 15, color: C.body, margin: '0 0 36px' }}>We partner with leaders in technology, strategy and transformation to help wealth and asset management firms improve revenue performance and accelerate profitable growth.</p>
         </Reveal>
         <div style={{ display: 'grid', gridTemplateColumns: relatedCols, gap: 16, alignItems: 'stretch' }}>
           {[
-            { icon: null, image: '/icons/innover.svg', color: C.azure, label: 'AI and digital transformation', href: 'https://www.innoverdigital.com/', desc: 'Combining AI, analytics and digital engineering with PureFacts to modernize revenue operations, improve efficiency and turn trusted data into actionable intelligence.', isPlatform: false },
-            { icon: null, image: '/icons/innover.svg', color: C.mandarin, label: 'Growth strategy and enterprise value',  href: 'https://www.ascentix.com/',  desc: 'Bringing wealth management strategy and private equity expertise to help firms strengthen pricing, capture more earned revenue and accelerate profitable organic growth.', isPlatform: false },
-            { icon: null, image: '/icons/innover.svg', color: C.azure, label: 'Advisory, implementation and transformation', href: 'https://www.capco.com/', desc: 'Pairing deep financial services expertise with PureFacts technology to modernize fees and billing, align advisor compensation and strengthen practice management.', isPlatform: true },
+            { icon: null, image: '/logos/innover.png', color: C.azure, label: 'AI and digital transformation', href: 'https://www.innoverdigital.com/', desc: 'Combining AI, analytics and digital engineering with PureFacts to modernize revenue operations, improve efficiency and turn trusted data into actionable intelligence.', isPlatform: false },
+            { icon: null, image: '/logos/ascentix.png', color: C.mandarin, label: 'Growth strategy and enterprise value',  href: 'https://www.ascentix.com/',  desc: 'Bringing wealth management strategy and private equity expertise to help firms strengthen pricing, capture more earned revenue and accelerate profitable organic growth.', isPlatform: false },
+            { icon: null, image: '/logos/capco.png', color: C.azure, label: 'Advisory, implementation and transformation', href: 'https://www.capco.com/', desc: 'Pairing deep financial services expertise with PureFacts technology to modernize fees and billing, align advisor compensation and strengthen practice management.', isPlatform: false },
           ].map((card, i) => (
             <Reveal key={card.label} delay={i * 70} style={{ display: 'flex' }}>
               {card.isPlatform ? (
@@ -296,7 +296,7 @@ function Expertise_powers(){
                   onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}
                 >
                   <div style={{ width: 180, height: 40, marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Image src="/PureRevenueWhite.svg" alt="PureRevenue" width={200} height={50} style={{ objectFit: 'contain' }} />
+                    <Image src={card.image} alt="PureRevenue" width={200} height={50} style={{ objectFit: 'contain' }} />
                   </div>
                   <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: C.text, margin: '0 0 10px' }}>{card.label}</h3>
                   <p style={{ fontSize: 14, color: C.body, lineHeight: 1.7, margin: '0 0 20px', flex: 1 }}>{card.desc}</p>
@@ -305,9 +305,9 @@ function Expertise_powers(){
                   </span>
                 </Link>
               ) : (
-                <Link href={card.href} className="cx-related-card" style={{ flex: 1, border: `1px solid ${card.color}` }} aria-label={`${card.label}: ${card.desc}`}>
+                <Link href={card.href} target='_blank' className="cx-related-card" style={{ flex: 1, border: `1px solid ${card.color}`, padding:'20px' }} aria-label={`${card.label}: ${card.desc}`}>
                   <div style={{ flexShrink: 0, marginBottom: 16 }}>
-                    <i className={`fa-solid ${card.icon}`} style={{ color: card.color, fontSize: 16, lineHeight: 1 }} aria-hidden="true" />
+                    <Image src={card.image} alt="imageLogo" width={200} height={50} style={{ objectFit: 'contain',     maxHeight: '60px', objectPosition: 'left' }} />
                   </div>
                   <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: C.text, margin: '0 0 10px' }}>{card.label}</h3>
                   <p style={{ fontSize: 14, color: C.body, lineHeight: 1.7, margin: '0 0 20px', flex: 1 }}>{card.desc}</p>
