@@ -196,7 +196,7 @@ function Eyebrow({ children, color = C.azure }: { children: React.ReactNode; col
 }
 
 function WhyPartners(){
-  const { ref, inView } = useInView(0.05)
+  const [mounted, setMounted] = useState(false)
   const { isMobile, isTablet } = useBreakpoint()
   const sectionPad = isMobile ? '56px 0' : '90px 0'
   const heroPad = isMobile ? '48px 0 48px' : '90px 0 72px'
@@ -205,6 +205,8 @@ function WhyPartners(){
   const heroGap = isMobile ? '24px' : isTablet ? '32px' : '80px'
   const sectionGap = isMobile ? '24px' : isTablet ? '32px' : '80px'
   const cardGridCols = isMobile ? '1fr' : '1fr 1fr'
+
+  useEffect(() => { setTimeout(() => setMounted(true), 80) }, [])
 
   return(
     <>
@@ -215,7 +217,7 @@ function WhyPartners(){
             paddingTop:96, paddingBottom:96,
             paddingLeft:'max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem))',
             paddingRight:isTablet?'max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem))':'3rem',
-            opacity:inView?1:0, transform:inView?'translateY(0)':'translateY(24px)',
+            opacity:mounted?1:0, transform:mounted?'translateY(0)':'translateY(24px)',
             transition:'opacity 0.7s ease, transform 0.7s ease',
           }}>
             <div style={{ maxWidth:'34rem' }}>
