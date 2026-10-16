@@ -210,6 +210,8 @@ function WhyPartners(){
 
   return(
     <>
+    {
+    /*
     <section style={{ position:'relative', zIndex:1, minHeight:'88vh', display:'flex', alignItems:'stretch' }} aria-label="About PureFacts">
         <div style={{ display:'flex', width:'100%', flexDirection:isTablet?'column':'row' }}>
           <div style={{
@@ -244,26 +246,28 @@ function WhyPartners(){
           </div>
         </div>
       </section>
+      */
+      }
 
     <section style={{ background: C.bg, position: 'relative', overflow: 'hidden', padding: sectionPad }} aria-label="Why a connected platform matters">
         <div aria-hidden="true" style={{ position: 'absolute', top: '10%', right: '0%', width: 600, height: 500, pointerEvents: 'none', background: 'radial-gradient(ellipse, rgba(59,132,255,0.06) 0%, transparent 60%)' }} />
+      
+        <div>
+          <Reveal>
+            <Eyebrow color={C.mandarin}>WHY PARTNER WITH PUREFACTS</Eyebrow>
+            <h2 style={{ fontSize: 'clamp(1.8rem,3vw,2.6rem)', fontWeight: 700, color: C.text, letterSpacing: '-0.025em', lineHeight: 1.18, margin: 0 }}>
+              More value for your<br />
+              <span style={{ color: C.mandarin }}>business and your customers</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={70}>
+            <p style={{ marginTop: 18, fontSize: 16, color: C.body, lineHeight: 1.75 }}></p>
+          </Reveal>
+        </div>
+
 
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: innerPad }}>
           <div style={{ display: 'grid', gridTemplateColumns: twoCols, gap: sectionGap, alignItems: 'start' }}>
-
-            {/* Left: eyebrow, H2, body */}
-            <div>
-              <Reveal>
-                <Eyebrow color={C.mandarin}>WHY PARTNER WITH PUREFACTS</Eyebrow>
-                <h2 style={{ fontSize: 'clamp(1.8rem,3vw,2.6rem)', fontWeight: 700, color: C.text, letterSpacing: '-0.025em', lineHeight: 1.18, margin: 0 }}>
-                  More value for your<br />
-                  <span style={{ color: C.mandarin }}>business and your customers</span>
-                </h2>
-              </Reveal>
-              <Reveal delay={70}>
-                <p style={{ marginTop: 18, fontSize: 16, color: C.body, lineHeight: 1.75 }}></p>
-              </Reveal>
-            </div>
 
             {/* Right: icons list (moved from below body, graphic removed) */}
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', alignSelf: 'start' }}>
@@ -284,6 +288,14 @@ function WhyPartners(){
                 </Reveal>
               ))}
             </ul>
+
+            <div style={{ flex:isTablet?'unset':'0 0 50%', position:'relative', minHeight: isTablet ? 380 : 480, alignSelf:'stretch', opacity:mounted?1:0, transition:'opacity 0.9s ease 0.2s' }}>
+              <GlobeCanvas />
+              <div style={{ position:'absolute', bottom:'10%', right:'6%', background:'rgba(26,20,16,0.88)', border:'1px solid rgba(255,179,12,0.25)', backdropFilter:'blur(12px)', padding:'12px 18px', opacity:mounted?1:0, transform:mounted?'translateY(0)':'translateY(8px)', transition:'opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s' }}>
+                <div style={{ fontSize:10, fontWeight:700, color:C.honey, letterSpacing:'0.18em', textTransform:'uppercase', marginBottom:4 }}>4 Global Offices</div>
+                <div style={{ fontSize:13, color:C.text, fontWeight:600 }}>Toronto · New York · Lisbon · Zurich</div>
+              </div>
+            </div>
 
           </div>
         </div>
