@@ -111,12 +111,28 @@ function Hero(){
   useEffect(()=>{setTimeout(()=>setMounted(true),80)},[])
   const [isModalOpen, setIsModalOpen] = useState(false)
   const bg = C.bg
+  const stylesHeroIconDesk = { 
+    position: 'absolute', 
+    right: '20%', 
+    top: '5%'
+  } as const;
+
+  const stylesHeroIconMob = {
+    position: 'relative', 
+    left: '0', 
+    top: '0',
+    marginBottom: '30px'
+  } as const;
+
   return (
     <>
       <section style={{position:'relative',overflow:'hidden',background:bg,padding:isMobile?'48px 0':isTablet?'72px 0':'90px 0 72px',display:'flex',alignItems:'center'}}>
         <RevenueLedgerCanvas  aRgb={C.aRgb} />
         <div style={{position:'absolute',bottom:0,left:0,right:0,height:160,background:`linear-gradient(to bottom, transparent, ${bg})`,pointerEvents:'none',zIndex:2}} aria-hidden="true" />
         <div style={{maxWidth:1280,margin:'0 auto',padding:isMobile?'0 20px':isTablet?'0 32px':'0 48px',width:'100%',position:'relative',zIndex:3}}>
+          <div style={isTablet ? stylesHeroIconMob : stylesHeroIconDesk}>
+            <Image src="/icons/azul.png" alt="imageLogo" width={150} height={150} style={{ objectFit: 'contain', objectPosition: 'left' }} />
+          </div>
           <div style={{maxWidth:640,opacity:mounted?1:0,transform:mounted?'translateY(0)':'translateY(24px)',transition:'opacity 0.7s ease, transform 0.7s ease'}}>
             <div style={{marginBottom:20}}>
               <span style={{fontSize:11,fontWeight:700,color:C.accent,textTransform:'uppercase',letterSpacing:'0.20em'}}>partner type</span>
@@ -134,9 +150,6 @@ function Hero(){
               </button>
             <Link href="/contact" className="btn-primary" style={{borderColor:C.accent}}>Contact Us</Link>
           </div>
-          <div style={{ position: 'absolute', right: '20%', top: '5%' }}>
-            <Image src="/icons/azul.png" alt="imageLogo" width={150} height={150} style={{ objectFit: 'contain', objectPosition: 'left' }} />
-          </div>
         </div>
       </section>
       <HubspotModal 
@@ -146,6 +159,64 @@ function Hero(){
           formId="647e0e88-54fc-4271-86ed-33f5b6cb2c65"
         />
     </>
+  )
+}
+
+function Overview_block(){
+  const { isMobile, isTablet } = useBreakpoint()
+  const sectionPad = isMobile ? '56px 0' : '90px 0'
+  const innerPad = isMobile ? '0 20px' : isTablet ? '0 32px' : '0 48px'
+  const twoCols = isTablet ? '1fr' : 'repeat(2, minmax(0, 1fr))'
+  const sectionGap = isMobile ? '24px' : isTablet ? '32px' : '80px'
+  return(
+     <section style={{ background: C.bg, position: 'relative', overflow: 'hidden', padding: sectionPad }} aria-label="Collection problems begin with fragmentation">
+        <div aria-hidden="true" style={{ position: 'absolute', top: '10%', right: '0%', width: 600, height: 500, pointerEvents: 'none', background: 'radial-gradient(ellipse, rgba(251,86,7,0.06) 0%, transparent 60%)' }} />
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: '0%', left: '5%', width: 500, height: 400, pointerEvents: 'none', background: 'radial-gradient(ellipse, rgba(59,132,255,0.04) 0%, transparent 60%)' }} />
+
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: innerPad }}>
+          <div style={{ display: 'grid', gridTemplateColumns: twoCols, gap: sectionGap, alignItems: 'start' }}>
+            <div>
+              <Reveal>
+                <Eyebrow color={C.accent}>Partner program</Eyebrow>
+                <h2 style={{ fontSize: 'clamp(1.8rem,3vw,2.6rem)', fontWeight: 700, color: C.text, letterSpacing: '-0.025em', lineHeight: 1.18, margin: 0 }}>
+                  Overview
+                </h2>
+              </Reveal>
+              <Reveal delay={70}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 18 }}>
+                  <p style={{ fontSize: 16, color: C.text, lineHeight: 1.75, margin: 0 }}>
+                    Client data lives in one system. Assets live in another. Billing rules
+                    sit somewhere else. Contract terms may be buried in PDFs, email threads,
+                    or static spreadsheets. By quarter-end, finance and operations are forced
+                    to stitch the truth together by hand.
+                  </p>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* Right: bullet list — bare icons, no backgrounds */}
+            <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+              {[
+                { label: 'Earned But Not Collected', icon: 'fa-circle-check',    detail: 'Revenue leaves the book before it is ever invoiced because billing logic does not reflect the full relationship.' },
+                { label: 'EBITDA Impact Is Direct',  icon: 'fa-circle-check' },
+                { label: 'Compounding Over Time',    icon: 'fa-circle-check' },
+                { label: 'Manual Reconciliation Cost', icon: 'fa-circle-check' },
+              ].map((item, i) => (
+                <Reveal key={item.label} delay={i * 70}>
+                  <li className="cl-bullet-row" style={{display:'flex', gap:'5px'}}>
+                    <div style={{ flexShrink: 0, display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+                      <i className={`fa-solid ${item.icon}`} style={{ color: C.accent, fontSize: 16, lineHeight: 1 }} aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p style={{ fontSize: 15, fontWeight: 700, color: C.text, marginBottom: '15px', lineHeight: 1 }}>{item.label}</p>
+                    </div>
+                  </li>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
   )
 }
 
@@ -413,9 +484,11 @@ export default function ContentReferralParnerClient() {
   return (
     <div style={{ background:C.bg, fontFamily:"'Carlito','Segoe UI',sans-serif", position:'relative' }}>
       <Hero />
+      <Overview_block />
       <Expertise_powers />
       <FeaturesCarousel accent={C.accent} />
       <LastBlock />
     </div>
   )
 }
+
