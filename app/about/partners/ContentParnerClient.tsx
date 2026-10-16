@@ -6,6 +6,7 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import HubspotModal from '@/components/resources/HubspotModal';
 import GlobeCanvas from '@/components/sections/GlobeCanvas'
 import Link from 'next/link'
+import Image from 'next/image'
 
 function useBreakpoint() {
   const [w, setW] = useState(1280)
@@ -209,45 +210,6 @@ function WhyPartners(){
   useEffect(() => { setTimeout(() => setMounted(true), 80) }, [])
 
   return(
-    <>
-    {
-    /*
-    <section style={{ position:'relative', zIndex:1, minHeight:'88vh', display:'flex', alignItems:'stretch' }} aria-label="About PureFacts">
-        <div style={{ display:'flex', width:'100%', flexDirection:isTablet?'column':'row' }}>
-          <div style={{
-            flex:isTablet?'unset':'0 0 50%', display:'flex', alignItems:'center',
-            paddingTop:96, paddingBottom:96,
-            paddingLeft:'max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem))',
-            paddingRight:isTablet?'max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem))':'3rem',
-            opacity:mounted?1:0, transform:mounted?'translateY(0)':'translateY(24px)',
-            transition:'opacity 0.7s ease, transform 0.7s ease',
-          }}>
-            <div style={{ maxWidth:'34rem' }}>
-              <div style={{ fontSize:11, fontWeight:700, letterSpacing:'0.20em', textTransform:'uppercase', color:C.mand, marginBottom:20 }}>About PureFacts</div>
-              <h1 style={{ fontSize:'clamp(2.25rem,5vw,3.75rem)', fontWeight:700, lineHeight:1.08, letterSpacing:'-0.025em', color:C.text, marginBottom:24 }}>
-                25 Years of{' '}
-                <span style={{ background:SUNSET, WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>Revenue Performance</span>
-              </h1>
-              <p style={{ fontSize:'1.0625rem', color:C.muted, lineHeight:1.75, marginBottom:40 }}>
-                PureFacts is the leader in the Revenue Performance Management category for
-                wealth and asset management firms. For more than 25 years, we have helped
-                leading financial institutions turn revenue from an operational process into
-                a strategic advantage.
-              </p>
-              <Link href="/contact" className="btn-primary">Get in touch</Link>
-            </div>
-          </div>
-          <div style={{ flex:isTablet?'unset':'0 0 50%', position:'relative', minHeight: isTablet ? 380 : 480, alignSelf:'stretch', opacity:mounted?1:0, transition:'opacity 0.9s ease 0.2s' }}>
-            <GlobeCanvas />
-            <div style={{ position:'absolute', bottom:'10%', right:'6%', background:'rgba(26,20,16,0.88)', border:'1px solid rgba(255,179,12,0.25)', backdropFilter:'blur(12px)', padding:'12px 18px', opacity:mounted?1:0, transform:mounted?'translateY(0)':'translateY(8px)', transition:'opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s' }}>
-              <div style={{ fontSize:10, fontWeight:700, color:C.honey, letterSpacing:'0.18em', textTransform:'uppercase', marginBottom:4 }}>4 Global Offices</div>
-              <div style={{ fontSize:13, color:C.text, fontWeight:600 }}>Toronto · New York · Lisbon · Zurich</div>
-            </div>
-          </div>
-        </div>
-      </section>
-      */
-      }
 
     <section style={{ background: C.bg, position: 'relative', overflow: 'hidden', padding: sectionPad }} aria-label="Why a connected platform matters">
         <div aria-hidden="true" style={{ position: 'absolute', top: '10%', right: '0%', width: 600, height: 500, pointerEvents: 'none', background: 'radial-gradient(ellipse, rgba(59,132,255,0.06) 0%, transparent 60%)' }} />
@@ -300,7 +262,65 @@ function WhyPartners(){
           </div>
         </div>
       </section>
-      </>
+  )
+}
+
+
+function Expertise_powers(){
+  const { isMobile, isTablet } = useBreakpoint()
+  const sectionPad = isMobile ? '56px 0' : '90px 0'
+  const innerPad = isMobile ? '0 20px' : isTablet ? '0 32px' : '0 48px'
+  const relatedCols = isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)'
+  return(
+    <section style={{ background: C.bg, position: 'relative', overflow: 'hidden', padding: sectionPad }} aria-label="Expertise that powers revenue performance">
+      <div aria-hidden="true" style={{ position: 'absolute', top: '0%', left: '50%', transform: 'translateX(-50%)', width: 800, height: 350, pointerEvents: 'none', background: 'radial-gradient(ellipse, rgba(59,132,255,0.05) 0%, transparent 60%)' }} />
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: innerPad }}>
+        <Reveal>
+          <h2 style={{ fontSize: 'clamp(1.5rem,2.5vw,2rem)', fontWeight: 700, color: C.text, letterSpacing: '-0.02em', margin: '0 0 8px' }}>Expertise that powers <span style={{ color: C.mandarin }}>revenue performance</span> </h2>
+          <p style={{ fontSize: 15, color: C.body, maxWidth: 560, margin: '0 0 36px' }}>We partner with leaders in technology, strategy and transformation to help wealth and asset management firms improve revenue performance and accelerate profitable growth.</p>
+        </Reveal>
+        <div style={{ display: 'grid', gridTemplateColumns: relatedCols, gap: 16, alignItems: 'stretch' }}>
+          {[
+            { icon: null, image: '/icons/innover.svg', color: C.azure, label: 'AI and digital transformation', href: 'https://www.innoverdigital.com/', desc: 'Combining AI, analytics and digital engineering with PureFacts to modernize revenue operations, improve efficiency and turn trusted data into actionable intelligence.', isPlatform: false },
+            { icon: null, image: '/icons/innover.svg', color: C.mandarin, label: 'Growth strategy and enterprise value',  href: 'https://www.ascentix.com/',  desc: 'Bringing wealth management strategy and private equity expertise to help firms strengthen pricing, capture more earned revenue and accelerate profitable organic growth.', isPlatform: false },
+            { icon: null, image: '/icons/innover.svg', color: C.azure, label: 'Advisory, implementation and transformation', href: 'https://www.capco.com/', desc: 'Pairing deep financial services expertise with PureFacts technology to modernize fees and billing, align advisor compensation and strengthen practice management.', isPlatform: true },
+          ].map((card, i) => (
+            <Reveal key={card.label} delay={i * 70} style={{ display: 'flex' }}>
+              {card.isPlatform ? (
+                <Link
+                  href={card.href}
+                  className="cx-gradient-border"
+                  style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: isMobile ? '24px 22px' : '28px 26px', textDecoration: 'none', position: 'relative', overflow: 'hidden', transition: 'transform 0.3s ease' }}
+                  aria-label={`${card.label}: ${card.desc}`}
+                  onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-4px)')}
+                  onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}
+                >
+                  <div style={{ width: 180, height: 40, marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Image src="/PureRevenueWhite.svg" alt="PureRevenue" width={200} height={50} style={{ objectFit: 'contain' }} />
+                  </div>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: C.text, margin: '0 0 10px' }}>{card.label}</h3>
+                  <p style={{ fontSize: 14, color: C.body, lineHeight: 1.7, margin: '0 0 20px', flex: 1 }}>{card.desc}</p>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700, color: C.honey }}>
+                    Explore the platform <i className="fa-solid fa-arrow-right" style={{ fontSize: 10 }} aria-hidden="true" />
+                  </span>
+                </Link>
+              ) : (
+                <Link href={card.href} className="cx-related-card" style={{ flex: 1, border: `1px solid ${card.color}` }} aria-label={`${card.label}: ${card.desc}`}>
+                  <div style={{ flexShrink: 0, marginBottom: 16 }}>
+                    <i className={`fa-solid ${card.icon}`} style={{ color: card.color, fontSize: 16, lineHeight: 1 }} aria-hidden="true" />
+                  </div>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: C.text, margin: '0 0 10px' }}>{card.label}</h3>
+                  <p style={{ fontSize: 14, color: C.body, lineHeight: 1.7, margin: '0 0 20px', flex: 1 }}>{card.desc}</p>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700, color: card.color }}>
+                    Learn more <i className="fa-solid fa-arrow-right" style={{ fontSize: 10 }} aria-hidden="true" />
+                  </span>
+                </Link>
+              )}
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -471,6 +491,7 @@ export default function ContentParnerClient() {
       <Hero />
       <ChooseYourPath />
       <WhyPartners />
+      <Expertise_powers />
       <FeaturesCarousel accent={ACCENT}/>
       <LastBlock />
     </div>
