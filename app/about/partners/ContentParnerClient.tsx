@@ -252,7 +252,7 @@ function WhyPartners(){
     <section style={{ background: C.bg, position: 'relative', overflow: 'hidden', padding: sectionPad }} aria-label="Why a connected platform matters">
         <div aria-hidden="true" style={{ position: 'absolute', top: '10%', right: '0%', width: 600, height: 500, pointerEvents: 'none', background: 'radial-gradient(ellipse, rgba(59,132,255,0.06) 0%, transparent 60%)' }} />
       
-        <div>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 48px'}}>
           <Reveal>
             <Eyebrow color={C.mandarin}>WHY PARTNER WITH PUREFACTS</Eyebrow>
             <h2 style={{ fontSize: 'clamp(1.8rem,3vw,2.6rem)', fontWeight: 700, color: C.text, letterSpacing: '-0.025em', lineHeight: 1.18, margin: 0 }}>
