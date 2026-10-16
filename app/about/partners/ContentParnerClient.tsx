@@ -4,6 +4,8 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import HubspotModal from '@/components/resources/HubspotModal';
+import GlobeCanvas from '@/components/sections/GlobeCanvas'
+import Link from 'next/link'
 
 function useBreakpoint() {
   const [w, setW] = useState(1280)
@@ -194,6 +196,7 @@ function Eyebrow({ children, color = C.azure }: { children: React.ReactNode; col
 }
 
 function WhyPartners(){
+  const { ref, inView } = useInView(0.05)
   const { isMobile, isTablet } = useBreakpoint()
   const sectionPad = isMobile ? '56px 0' : '90px 0'
   const heroPad = isMobile ? '48px 0 48px' : '90px 0 72px'
@@ -204,6 +207,42 @@ function WhyPartners(){
   const cardGridCols = isMobile ? '1fr' : '1fr 1fr'
 
   return(
+    <>
+    <section style={{ position:'relative', zIndex:1, minHeight:'88vh', display:'flex', alignItems:'stretch' }} aria-label="About PureFacts">
+        <div style={{ display:'flex', width:'100%', flexDirection:isTablet?'column':'row' }}>
+          <div style={{
+            flex:isTablet?'unset':'0 0 50%', display:'flex', alignItems:'center',
+            paddingTop:96, paddingBottom:96,
+            paddingLeft:'max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem))',
+            paddingRight:isTablet?'max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem))':'3rem',
+            opacity:inView?1:0, transform:inView?'translateY(0)':'translateY(24px)',
+            transition:'opacity 0.7s ease, transform 0.7s ease',
+          }}>
+            <div style={{ maxWidth:'34rem' }}>
+              <div style={{ fontSize:11, fontWeight:700, letterSpacing:'0.20em', textTransform:'uppercase', color:C.mand, marginBottom:20 }}>About PureFacts</div>
+              <h1 style={{ fontSize:'clamp(2.25rem,5vw,3.75rem)', fontWeight:700, lineHeight:1.08, letterSpacing:'-0.025em', color:C.text, marginBottom:24 }}>
+                25 Years of{' '}
+                <span style={{ background:SUNSET, WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>Revenue Performance</span>
+              </h1>
+              <p style={{ fontSize:'1.0625rem', color:C.muted, lineHeight:1.75, marginBottom:40 }}>
+                PureFacts is the leader in the Revenue Performance Management category for
+                wealth and asset management firms. For more than 25 years, we have helped
+                leading financial institutions turn revenue from an operational process into
+                a strategic advantage.
+              </p>
+              <Link href="/contact" className="btn-primary">Get in touch</Link>
+            </div>
+          </div>
+          <div style={{ flex:isTablet?'unset':'0 0 50%', position:'relative', minHeight: isTablet ? 380 : 480, alignSelf:'stretch', opacity:mounted?1:0, transition:'opacity 0.9s ease 0.2s' }}>
+            <GlobeCanvas />
+            <div style={{ position:'absolute', bottom:'10%', right:'6%', background:'rgba(26,20,16,0.88)', border:'1px solid rgba(255,179,12,0.25)', backdropFilter:'blur(12px)', padding:'12px 18px', opacity:mounted?1:0, transform:mounted?'translateY(0)':'translateY(8px)', transition:'opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s' }}>
+              <div style={{ fontSize:10, fontWeight:700, color:C.honey, letterSpacing:'0.18em', textTransform:'uppercase', marginBottom:4 }}>4 Global Offices</div>
+              <div style={{ fontSize:13, color:C.text, fontWeight:600 }}>Toronto · New York · Lisbon · Zurich</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     <section style={{ background: C.bg, position: 'relative', overflow: 'hidden', padding: sectionPad }} aria-label="Why a connected platform matters">
         <div aria-hidden="true" style={{ position: 'absolute', top: '10%', right: '0%', width: 600, height: 500, pointerEvents: 'none', background: 'radial-gradient(ellipse, rgba(59,132,255,0.06) 0%, transparent 60%)' }} />
 
@@ -247,6 +286,7 @@ function WhyPartners(){
           </div>
         </div>
       </section>
+      </>
   )
 }
 
