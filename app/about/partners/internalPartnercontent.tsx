@@ -268,16 +268,13 @@ function Expertise_powers({ data, theme }: { data: PartnerPageData['expertise'],
                   </span>
                 </Link>
               ) : (
-                <Link href={card.href} className="cx-related-card" style={{ flex: 1, border: `1px solid ${theme.accent}`, padding: isMobile ? '24px 22px' : '28px 26px', }}>
+                <div className="cx-related-card" style={{ flex: 1, border: `1px solid ${theme.accent}`, padding: isMobile ? '24px 22px' : '28px 26px', }}>
                   <div style={{ flexShrink: 0, marginBottom: 16 }}>
                     <i className={`fa-solid ${card.icon}`} style={{ color: theme.accent, fontSize: 16, lineHeight: 1 }} aria-hidden="true" />
                   </div>
                   <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: theme.text, margin: '0 0 10px' }}>{card.label}</h3>
                   <p style={{ fontSize: 14, color: theme.text, lineHeight: 1.7, margin: '0 0 20px', flex: 1 }}>{card.desc}</p>
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700, color: theme.accent }}>
-                    Learn more <i className="fa-solid fa-arrow-right" style={{ fontSize: 10 }} aria-hidden="true" />
-                  </span>
-                </Link>
+                </div>
               )}
             </Reveal>
           ))}
