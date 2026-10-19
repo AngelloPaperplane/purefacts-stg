@@ -58,8 +58,8 @@ const referralData = {
     steps: [
       { icon: 'fa-cubes', title: 'Consulting Firms', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '' },
       { icon: 'fa-key', title: 'Implementation Specialist', body: 'Our team reviews your submission and follows up.', count: '' },
-      { icon: 'fa-plane-departure', title: 'Onboard', body: 'Complete onboarding and gain partner access.', count: '03' },
-      { icon: 'fa-angles-up', title: 'Grow', body: 'Start collaborating, driving value and growing together.', count: '04' }
+      { icon: 'fa-plane-departure', title: 'Onboard', body: 'Complete onboarding and gain partner access.', count: '' },
+      { icon: 'fa-angles-up', title: 'Grow', body: 'Start collaborating, driving value and growing together.', count: '' }
     ]
   },
   lastBlock: {
