@@ -360,13 +360,12 @@ function FeaturesCarousel({ data, theme }: { data: PartnerPageData['features'], 
                 const CARD_W = 340, CARD_GAP = 20
                 return (
                   <div key={`slot-${offset}`} onClick={() => { if (!dragRef.current.moved && !isCenter) setActive(a => a + offset) }} aria-hidden={!isCenter}
-                    style={{ position: 'absolute', top: 0, left: 0, width: CARD_W, height: '100%', padding: '32px 28px 20px', boxSizing: 'border-box', background: isCenter ? `rgba(${theme.aRgb},0.07)` : theme.surface, border: `1px solid ${isCenter ? theme.accent : theme.border}`, overflow: 'hidden', opacity: Math.abs(offset) <= 1 ? (isCenter ? 1 : 0.5) : 0, transform: `translateX(${offset * (CARD_W + CARD_GAP)}px)`, transition: 'opacity 0.35s ease, border-color 0.35s ease, background 0.35s ease, transform 0.45s cubic-bezier(0.4,0,0.2,1)', cursor: isCenter ? 'default' : 'pointer', pointerEvents: Math.abs(offset) > 2 ? 'none' : 'auto' }}>
+                    style={{ display: 'flex', flexDirection: 'column', position: 'absolute', top: 0, left: 0, width: CARD_W, height: '100%', padding: '32px 28px 20px', boxSizing: 'border-box', background: isCenter ? `rgba(${theme.aRgb},0.07)` : theme.surface, border: `1px solid ${isCenter ? theme.accent : theme.border}`, overflow: 'hidden', opacity: Math.abs(offset) <= 1 ? (isCenter ? 1 : 0.5) : 0, transform: `translateX(${offset * (CARD_W + CARD_GAP)}px)`, transition: 'opacity 0.35s ease, border-color 0.35s ease, background 0.35s ease, transform 0.45s cubic-bezier(0.4,0,0.2,1)', cursor: isCenter ? 'default' : 'pointer', pointerEvents: Math.abs(offset) > 2 ? 'none' : 'auto' }}>
                     <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start', marginBottom: 20 }}>
-                      <i className={`fa-solid ${feat.icon}`} style={{ color: theme.accent, fontSize: 20 }} aria-hidden="true" />
+                      <i className={`fa-solid ${feat.icon}`} style={{ color: theme.accent, fontSize: 50 }} aria-hidden="true" />
                     </div>
-                    <div style={{ fontSize: 15, fontWeight: 700, color: theme.text, marginBottom: 10, lineHeight: 1.3 }}>{feat.title}</div>
-                    <p style={{ fontSize: 13, color: theme.muted, lineHeight: 1.7, margin: 0 }}>{feat.body}</p>
-                    <div style={{ fontSize: 'clamp(6rem,15vw,10rem)', fontWeight: 100, paddingTop: '3vh', float: 'right', lineHeight: 1, letterSpacing: '-0.04em', color: theme.accent, margin: 0 }} aria-label={feat.count}>{feat.count}</div>
+                    <div style={{ fontSize: 40, fontWeight: 700, color: theme.text, marginBottom: 10, lineHeight: 1.3 }}>{feat.title}</div>
+                    <p style={{ fontSize: 18, color: theme.text, lineHeight: 1.7, marginTop: 'auto' }}>{feat.body}</p>
                     {isCenter && (
                       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 2, background: `rgba(${theme.aRgb},0.12)` }} aria-hidden="true">
                         <div style={{ height: '100%', width: `${fillPct}%`, background: theme.accent, transition: 'none' }} />
@@ -393,13 +392,13 @@ function LastBlock({ data, theme, hubspot }: { data: PartnerPageData['lastBlock'
 
   return (
     <>
-      <section style={{ position: 'relative', overflow: 'hidden', background: `radial-gradient(ellipse 120% 80% at 50% 10%, #1a1e2e 0%, ${theme.bg} 55%)`, minHeight: isMobile ? 'auto' : '65vh', display: 'flex', alignItems: 'center' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: theme.bg, minHeight: isMobile ? 'auto' : '65vh', display: 'flex', alignItems: 'center' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '20px' : isTablet ? '32px' : '48px', width: '100%', textAlign: 'center', position: 'relative', zIndex: 2, paddingTop: isMobile ? 112 : 160, paddingBottom: isMobile ? 96 : 130 }}>
           <h2 style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.028em', color: theme.text, maxWidth: 820, margin: '0 auto 24px', opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.08s, transform 0.7s ease 0.08s' }}>
             {data.titleLine1}<br />
             <span style={{ background: SUNSET, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{data.titleHighlight}</span>
           </h2>
-          <p style={{ fontSize: isMobile ? '1rem' : '1.125rem', color: theme.muted, lineHeight: 1.75, maxWidth: 600, margin: '0 auto 44px', opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.16s, transform 0.7s ease 0.16s' }}>
+          <p style={{ fontSize: isMobile ? '1rem' : '1.125rem', color: theme.text, lineHeight: 1.75, maxWidth: 600, margin: '0 auto 44px', opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.16s, transform 0.7s ease 0.16s' }}>
             {data.description}
           </p>
           <div style={{ opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease 0.24s, transform 0.7s ease 0.24s' }}>
