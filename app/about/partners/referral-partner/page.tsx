@@ -25,47 +25,47 @@ const referralData = {
     eyebrow: 'partner type',
     titleLine1: 'Referral Partner',
     titleAccent: 'Refer. Reward. Repeat.',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    cta: 'Become a Partner',
+    description: 'Introduce PureFacts to organizations that can benefit from smarter revenue management and earn rewards for opportunities that convert',
+    cta: 'Become a Referral Partner',
     contactText: 'Contact Us',
     contactLink: '/contact'
   },
   overview: {
     eyebrow: 'Partner program',
     title: 'Overview',
-    description: 'Client data lives in one system. Assets live in another. Billing rules sit somewhere else. Contract terms may be buried in PDFs, email threads, or static spreadsheets. By quarter-end, finance and operations are forced to stitch the truth together by hand.',
+    description: 'As a Referral Partner, you connect us with potential customers and we take it from there. It’s a simple way to add value to your network while earning rewards for successful introductions.',
     bullets: [
-      { label: 'Earned But Not Collected', icon: 'fa-circle-check' },
-      { label: 'EBITDA Impact Is Direct', icon: 'fa-circle-check' },
-      { label: 'Compounding Over Time', icon: 'fa-circle-check' },
-      { label: 'Manual Reconciliation Cost', icon: 'fa-circle-check' }
+      { label: 'No implementation required', icon: 'fa-circle-check' },
+      { label: 'No ongoing obligations', icon: 'fa-circle-check' },
+      { label: 'Attractive referral incentives', icon: 'fa-circle-check' },
+      { label: 'Real-time deal visibility', icon: 'fa-circle-check' }
     ]
   },
   expertise: {
     title: 'How it Works',
     cards: [
-      { icon: 'fa-circle-check', label: 'Compression', href: '/why-purefacts/compression', desc: 'Fee pressure is rising while cost to serve expands.', isPlatform: false },
-      { icon: 'fa-circle-check', label: 'Collection', href: '/why-purefacts/collection', desc: 'Revenue you earned but did not collect is margin lost.', isPlatform: false },
-      { icon: 'fa-circle-check', label: 'Secure Your Revenue Lifecycle', href: '/platform', desc: 'Compression, collection, and complexity are connected problems.', isPlatform: false }
+      { icon: 'fa-circle-check', label: 'Refer', href: '/why-purefacts/our-process', desc: 'Introduce us to a prospect who could beneft from PureFacts.', isPlatform: false },
+      { icon: 'fa-circle-check', label: 'Connect', href: '/why-purefacts/our-process', desc: 'We reach out, qualify the opportunity. and keep you informed.', isPlatform: false },
+      { icon: 'fa-circle-check', label: 'Convert', href: '/why-purefacts/our-process', desc: 'When the deal closes, you earn a referral reward.', isPlatform: false }
     ]
   },
   features: {
-    eyebrow: 'HOW IT WORKS',
-    titleLine1: 'Your journey',
+    eyebrow: 'WHO IT’S FOR',
+    titleLine1: 'Who it’s for',
     titleAccent: 'to partnership',
-    description: 'A simple process to get started and set your partnership in motion.',
+    description: 'Perfect for consultants, advisors, industry influencers, and organizations that want to recommend best-in-class solutions to their network.',
     steps: [
-      { icon: 'fa-check-to-slot', title: 'Apply', body: 'Tell us about your business and goals.', count: '01' },
-      { icon: 'fa-magnifying-glass-chart', title: 'Review', body: 'Our team reviews your submission and follows up.', count: '02' },
-      { icon: 'fa-plane-departure', title: 'Onboard', body: 'Complete onboarding and gain partner access.', count: '03' },
-      { icon: 'fa-angles-up', title: 'Grow', body: 'Start collaborating, driving value and growing together.', count: '04' }
+      { icon: 'fa-cubes', title: 'Consulting Firms', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '01' },
+      { icon: 'fa-key', title: 'Implementation Specialist', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '02' },
+      { icon: 'fa-plane-departure', title: 'Consulting Firms', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '03' },
+      { icon: 'fa-angles-up', title: 'Implementation Specialist', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '04' }
     ]
   },
   lastBlock: {
-    titleLine1: 'Let’s build',
-    titleHighlight: 'what’s next',
-    description: 'Join the PureFacts Partner Program and be part of an ecosystem that\'s transforming how the world works with data.',
-    cta: 'Become a Partner'
+    titleLine1: 'Ready to implement',
+    titleHighlight: 'success?',
+    description: 'Partner with PureFacts to deliver exceptional client outcomes.',
+    cta: 'Become a Referral Partner'
   }
 };
 

@@ -6,7 +6,7 @@ import BreadcrumbJsonLd from '@/components/ui/BreadcrumbJsonLd'
 import PartnerTemplate from '../internalPartnercontent';
 
 export const metadata: Metadata = {
-  title: 'Referral Partner | Partner | About PureFacts',
+  title: 'Technology Partner | Partner | About PureFacts',
   description:
     "Join PureFacts and help shape the future of revenue management for the world's leading financial institutions.",
 }
@@ -26,7 +26,7 @@ const referralData = {
     titleLine1: 'Technology &\u00A0Integration\u00A0Partner',
     titleAccent: 'Integrate. Innovate. Togeter.',
     description: 'Build and integrate solutions that extend the value of PureFacts and create seamless experiences for mutual clients.',
-    cta: 'Become a Referral Partner',
+    cta: 'Become a Technology Partner',
     contactText: 'Contact Us',
     contactLink: '/contact'
   },
@@ -44,9 +44,9 @@ const referralData = {
   expertise: {
     title: 'How it Works',
     cards: [
-      { icon: 'fa-circle-check', label: 'Build', href: '#', desc: 'Build or integrate your solution with the PureFacts platform.', isPlatform: false },
-      { icon: 'fa-circle-check', label: 'Validate', href: '#', desc: 'Collaborate on validation, testing, and joint go-to market.', isPlatform: false },
-      { icon: 'fa-circle-check', label: 'Scale', href: '#', desc: 'Drive adoption together and deliver more value to clients.', isPlatform: false }
+      { icon: 'fa-circle-check', label: 'Build', href: '/why-purefacts/our-process', desc: 'Build or integrate your solution with the PureFacts platform.', isPlatform: false },
+      { icon: 'fa-circle-check', label: 'Validate', href: '/why-purefacts/our-process', desc: 'Collaborate on validation, testing, and joint go-to market.', isPlatform: false },
+      { icon: 'fa-circle-check', label: 'Scale', href: '/why-purefacts/our-process', desc: 'Drive adoption together and deliver more value to clients.', isPlatform: false }
     ]
   },
   features: {
@@ -55,17 +55,17 @@ const referralData = {
     titleAccent: 'to partnership',
     description: 'ISVs, SaaS companies, and technology providers building solutions that integrate with or extend PureFacts.',
     steps: [
-      { icon: 'fa-check-to-slot', title: 'Apply', body: 'Tell us about your business and goals.', count: '01' },
-      { icon: 'fa-magnifying-glass-chart', title: 'Review', body: 'Our team reviews your submission and follows up.', count: '02' },
-      { icon: 'fa-plane-departure', title: 'Onboard', body: 'Complete onboarding and gain partner access.', count: '03' },
-      { icon: 'fa-angles-up', title: 'Grow', body: 'Start collaborating, driving value and growing together.', count: '04' }
+      { icon: 'fa-cubes', title: 'ISVs & SaaS Companies', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '' },
+      { icon: 'fa-key', title: 'Data & Analitycs Providers', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '' },
+      { icon: 'fa-plane-departure', title: 'ISVs & SaaS Companies', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '' },
+      { icon: 'fa-angles-up', title: 'Data & Analitycs Providers', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '' }
     ]
   },
   lastBlock: {
-    titleLine1: 'Let’s build',
-    titleHighlight: 'what’s next',
-    description: 'Join the PureFacts Partner Program and be part of an ecosystem that\'s transforming how the world works with data.',
-    cta: 'Become a Partner'
+    titleLine1: 'Ready to implement',
+    titleHighlight: 'success?',
+    description: 'Partner with PureFacts to deliver exceptional client outcomes.',
+    cta: 'Become a Technology Partner'
   }
 };
 

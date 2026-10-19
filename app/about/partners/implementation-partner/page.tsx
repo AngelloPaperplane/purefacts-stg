@@ -57,9 +57,9 @@ const referralData = {
     description: 'Implementation firms and consultancies with experience deploying enterprise software solutions for wealth management firms.',
     steps: [
       { icon: 'fa-cubes', title: 'Consulting Firms', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '' },
-      { icon: 'fa-key', title: 'Implementation Specialist', body: 'Our team reviews your submission and follows up.', count: '' },
-      { icon: 'fa-plane-departure', title: 'Onboard', body: 'Complete onboarding and gain partner access.', count: '' },
-      { icon: 'fa-angles-up', title: 'Grow', body: 'Start collaborating, driving value and growing together.', count: '' }
+      { icon: 'fa-key', title: 'Implementation Specialist', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '' },
+      { icon: 'fa-plane-departure', title: 'Consulting Firms', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '' },
+      { icon: 'fa-angles-up', title: 'Implementation Specialist', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', count: '' }
     ]
   },
   lastBlock: {
