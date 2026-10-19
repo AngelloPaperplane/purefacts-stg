@@ -287,6 +287,57 @@ function Expertise_powers({ data, theme }: { data: PartnerPageData['expertise'],
   )
 }
 
+
+//---FEATURES-----
+function FeaturesCarousel({ data, theme }: { data: PartnerPageData['features'], theme: ThemeConfig }) {
+  const { isMobile, isTablet } = useBreakpoint()
+  const sectionPad = isMobile ? '56px 0' : '90px 0'
+  const innerPad = isMobile ? '0 20px' : isTablet ? '0 32px' : '0 48px'
+  const twoCols = isTablet ? '1fr' : 'repeat(2, minmax(0, 1fr))'
+  const sectionGap = isMobile ? '24px' : isTablet ? '32px' : '80px'
+
+  return (
+    <section style={{ background: theme.bg, position: 'relative', overflow: 'hidden', padding: sectionPad }} aria-label="Overview">
+      <div aria-hidden="true" style={{ position: 'absolute', top: '10%', right: '0%', width: 600, height: 500, pointerEvents: 'none', background: 'radial-gradient(ellipse, rgba(251,86,7,0.06) 0%, transparent 60%)' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', bottom: '0%', left: '5%', width: 500, height: 400, pointerEvents: 'none', background: `radial-gradient(ellipse, rgba(${theme.aRgb},0.04) 0%, transparent 60%)` }} />
+
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: innerPad }}>
+        <div style={{ display: 'grid', gridTemplateColumns: twoCols, gap: sectionGap, alignItems: 'start' }}>
+          <div>
+            <Reveal>
+              <Eyebrow color={theme.accent}>{data.eyebrow}</Eyebrow>
+              <h2 style={{ fontSize: 'clamp(1.8rem,3vw,2.6rem)', fontWeight: 700, color: theme.text, letterSpacing: '-0.025em', lineHeight: 1.18, margin: 0 }}>
+                {data.titleLine1}<br /><span style={{ color: theme.accent }}>{data.titleAccent}</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={70}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 18 }}>
+                <p style={{ fontSize: 16, color: theme.text, lineHeight: 1.75, margin: 0 }}>{data.description}</p>
+              </div>
+            </Reveal>
+          </div>
+
+          <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+            {data.steps.map((item, i) => (
+              <Reveal key={i} delay={i * 70}>
+                <li className="cl-bullet-row" style={{ display: 'flex', gap: '5px' }}>
+                  <div style={{ flexShrink: 0, display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+                    <i className={`fa-solid ${item.icon}`} style={{ color: theme.accent, fontSize: 16, lineHeight: 1 }} aria-hidden="true" />
+                  </div>
+                  <div>
+                    <p style={{ fontSize: 15, fontWeight: 700, color: theme.text, marginBottom: '15px', lineHeight: 1 }}>{item.title}</p>
+                  </div>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/*
 // ---- FEATURES -----
 function FeaturesCarousel({ data, theme }: { data: PartnerPageData['features'], theme: ThemeConfig }) {
   const { ref, inView } = useInView(0.05)
@@ -382,6 +433,7 @@ function FeaturesCarousel({ data, theme }: { data: PartnerPageData['features'], 
     </section>
   )
 }
+*/
 
 // ---- LAST -----
 function LastBlock({ data, theme, hubspot }: { data: PartnerPageData['lastBlock'], theme: ThemeConfig, hubspot: PartnerPageData['hubspot'] }) {
